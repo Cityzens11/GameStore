@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="~/css/Accounts/accountscontroller_register.css" asp-append-version="true" />
 
 <div class="container">
-    <form method="post" asp-action="Register">
+    <form method="post" asp-action="Register" enctype="multipart/form-data">
         <div class="div">
             <label class="label" asp-for="FirstName">First Name:</label>
             <input class="input" asp-for="FirstName" type="text" id="FirstName" name="FirstName" required>
@@ -17,22 +17,27 @@
         </div>
         <div class="div">
             <label class="label" asp-for="LastName">Last Name:</label>
-            <input class="input" asp-for="FirstName" type="text" id="LastName" name="LastName" required>
+            <input class="input" asp-for="LastName" type="text" id="LastName" name="LastName" required>
             <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
         <div class="div">
             <label class="label" asp-for="UserName">Username:</label>
-            <input class="input" asp-for="FirstName" type="text" id="UserName" name="UserName" required>
+            <input class="input" asp-for="UserName" type="text" id="UserName" name="UserName" required>
             <span asp-validation-for="UserName" class="text-danger"></span>
         </div>
         <div class="div">
             <label class="label" asp-for="Email">Email:</label>
-            <input class="input" asp-for="FirstName" type="email" id="Email" name="Email" required>
+            <input class="input" asp-for="Email" type="email" id="Email" name="Email" required>
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="div">
+            <label class="label" asp-for="Image">Image:</label>
+            <input class="input" asp-for="Image" type="file" id="Image" name="Image" accept=".jpg,.jpeg,.png">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <div class="div">
             <label class="label" asp-for="Password">Password:</label>
-            <input class="input" asp-for="FirstName" type="password" id="Password" name="Password" minlength="5" maxlength="50" required>
+            <input class="input" asp-for="Password" type="password" id="Password" name="Password" minlength="5" maxlength="50" required>
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="div">

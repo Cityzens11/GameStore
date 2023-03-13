@@ -3,6 +3,12 @@
     public interface IUserAccountService
     {
         /// <summary>
+        /// Gets the user by username
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        Task<UserAccountModel> GetUser(string userName);
+        /// <summary>
         /// Create user account
         /// </summary>
         /// <param name="model"></param>

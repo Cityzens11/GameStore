@@ -6,15 +6,20 @@ using System.ComponentModel.DataAnnotations;
 public class GameModel
 {
     public int? Id { get; set; }
+
     [Required]
     [MinLength(3)]
     [MaxLength(100)]
     public string Title { get; set; } = string.Empty;
+
     [Required]
     [MaxLength(3000)]
     public string Description { get; set; } = string.Empty;
     public string Publisher { get; set; } = string.Empty;
+
+    [ImageDimensions(400, 400, ErrorMessage = "Image must be 400x400 pixels")]
     public IFormFile? Image { get; set; }
+
     public string? ImageUri { get; set; } = string.Empty;
     public float Price { get; set; }
     public IEnumerable<string>? Genres { get; set; }

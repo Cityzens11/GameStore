@@ -19,6 +19,7 @@ public class MainDbContext : IdentityDbContext<User, UserRole, Guid>
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<User>().ToTable("users");
+        modelBuilder.Entity<User>().HasIndex(u => u.UserName).IsUnique();
         modelBuilder.Entity<UserRole>().ToTable("user_roles");
         modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("user_tokens");
         modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("user_role_owners");

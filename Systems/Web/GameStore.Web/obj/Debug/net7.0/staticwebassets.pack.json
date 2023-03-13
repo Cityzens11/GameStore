@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\css\\notavailable.jpg"
     },
     {
+      "Id": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\notavailable_av.jpg",
+      "PackagePath": "staticwebassets\\css\\notavailable_av.jpg"
+    },
+    {
       "Id": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

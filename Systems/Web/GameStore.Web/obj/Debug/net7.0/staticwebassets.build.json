@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3jv2Qa9YcrBjVjxMH+gR0Z+ZxhfQYKy9Jy49ea4Qi9s=",
+  "Hash": "71h++hNw4ODaX7ABHrD/1uL7yZBLO8Wj9v0N1ucubtk=",
   "Source": "GameStore.Web",
   "BasePath": "_content/GameStore.Web",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\notavailable.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\notavailable_av.jpg",
+      "SourceId": "GameStore.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\",
+      "BasePath": "_content/GameStore.Web",
+      "RelativePath": "css/notavailable_av.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\notavailable_av.jpg"
     },
     {
       "Identity": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\site.css",

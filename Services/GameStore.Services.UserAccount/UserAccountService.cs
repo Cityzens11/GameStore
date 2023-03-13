@@ -24,10 +24,19 @@ public class UserAccountService : IUserAccountService
         this.registerUserAccountModelValidator = registerUserAccountModelValidator;
     }
 
+    public async Task<UserAccountModel> GetUser(string userName)
+    {
+        var user = await userManager.FindByNameAsync(userName);
+        if (user is null)
+            throw new ProcessException("User account does not exist");
+
+        return mapper.Map<UserAccountModel>(user);
+    }
+
     public async Task<UserAccountModel> Create(RegisterUserAccountModel model)
     {
         registerUserAccountModelValidator.Check(model);
-
+        
         //Find user by email
         var user = await userManager.FindByEmailAsync(model.Email);
         if (user != null)
@@ -39,6 +48,7 @@ public class UserAccountService : IUserAccountService
             Role = model.UserRole,
             Status = UserStatus.Active,
             FullName = model.FirstName + " " + model.LastName,
+            ImageUri = model.ImageUri ?? string.Empty,
             UserName = model.UserName,
             Email = model.Email,
             EmailConfirmed = false,

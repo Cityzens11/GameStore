@@ -12,6 +12,7 @@ public static class IS4Configuration
         services
             .AddIdentity<User, UserRole>(opt =>
             {
+                opt.User.RequireUniqueEmail = true;
                 opt.Password.RequiredLength = 0;
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireLowercase = false;

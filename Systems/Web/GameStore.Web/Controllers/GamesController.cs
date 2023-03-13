@@ -15,14 +15,19 @@ public class GamesController : Controller
     private IGameService _gameService;
     private ICommentService _commentService;
     private IMapper _mapper;
-    private User _user;
+    private ICookieService _cookieService;
 
-    public GamesController(IGameService gameService, ICommentService commentService, IMapper mapper, User user) 
+    public GamesController(
+        IGameService gameService, 
+        ICommentService commentService, 
+        IMapper mapper, 
+        ICookieService cookieService
+        ) 
     {
         _gameService = gameService;
         _commentService = commentService;
         _mapper = mapper;
-        _user = user;
+        _cookieService = cookieService;
     }
 
     [Route("GetGames")]
@@ -36,8 +41,7 @@ public class GamesController : Controller
         PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
         IndexViewModel viewModel = new IndexViewModel(games, pageViewModel, filter);
 
-        ViewBag.IsSigned = _user.IsSigned();
-        ViewBag.UserName = _user.GetUserName();
+        SetViewBag();
         return View(viewModel);
     }
 
@@ -48,8 +52,7 @@ public class GamesController : Controller
 
         var game_comments = new GameAndComments(game, comments);
 
-        ViewBag.IsSigned = _user.IsSigned();
-        ViewBag.UserName = _user.GetUserName();
+        SetViewBag();
         return View(game_comments);
     }
 
@@ -58,8 +61,7 @@ public class GamesController : Controller
     {
         var model = new GameModel();
 
-        ViewBag.IsSigned = _user.IsSigned();
-        ViewBag.UserName = _user.GetUserName();
+        SetViewBag();
         return View(model);
     }
 
@@ -78,8 +80,7 @@ public class GamesController : Controller
             return RedirectToAction("GetGames");
         }
 
-        ViewBag.IsSigned = _user.IsSigned();
-        ViewBag.UserName = _user.GetUserName();
+        SetViewBag();
         return View(model);
     }
 
@@ -89,8 +90,7 @@ public class GamesController : Controller
         var game = await _gameService.GetGameAsync(gameId);
         var model = _mapper.Map<GameModel>(game);
 
-        ViewBag.IsSigned = _user.IsSigned();
-        ViewBag.UserName = _user.GetUserName();
+        SetViewBag();
         return View(model);
     }
 
@@ -109,8 +109,7 @@ public class GamesController : Controller
             return RedirectToAction("GetGames");
         }
 
-        ViewBag.IsSigned = _user.IsSigned();
-        ViewBag.UserName = _user.GetUserName();
+        SetViewBag();
         return View(model);
     }
 
@@ -128,5 +127,14 @@ public class GamesController : Controller
     {
         var count = await _gameService.GetGamesCountAsync();
         return count;
+    }
+
+    [NonAction]
+    public void SetViewBag()
+    {
+        ViewBag.IsSigned = _cookieService.IsSigned();
+        ViewBag.UserName = _cookieService.GetUserName();
+        ViewBag.FullName = _cookieService.GetFullName();
+        ViewBag.Image = _cookieService.GetImage();
     }
 }

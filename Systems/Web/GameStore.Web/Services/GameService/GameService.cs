@@ -16,13 +16,20 @@ using System.Threading.Tasks;
 public class GameService : IGameService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly ICloudinaryService _cloudinaryService;
     private readonly HttpClient _httpClient;
     private readonly CloudinarySettings _cloudinarySettings;
 
-    public GameService(IHttpContextAccessor httpContextAccessor, HttpClient httpClient, CloudinarySettings cloudinarySettings)
+    public GameService(
+        IHttpContextAccessor httpContextAccessor, 
+        ICloudinaryService cloudinaryService, 
+        HttpClient httpClient, 
+        CloudinarySettings cloudinarySettings
+        )
     {
         _cloudinarySettings = cloudinarySettings;
         _httpClient = httpClient;
+        _cloudinaryService = cloudinaryService;
         _httpContextAccessor = httpContextAccessor;
     }
 
@@ -83,7 +90,7 @@ public class GameService : IGameService
     {
         if (model.Image != null)
         {
-            model.ImageUri = await UploadCloudinary(model.Image);
+            model.ImageUri = await _cloudinaryService.UploadCloudinary(model.Image, "games");
         }
         string url = $"{Settings.ApiRoot}/v1/games";
 
@@ -163,31 +170,6 @@ public class GameService : IGameService
         var data = JsonSerializer.Deserialize<int>(content);
 
         return data;
-    }
-
-    private async Task<string> UploadCloudinary(IFormFile image)
-    {
-        var api_name = _cloudinarySettings.CloudName;
-        var api_key = _cloudinarySettings.ApiKey;
-        var api_secret = _cloudinarySettings.ApiSecret;
-
-        Account account = new Account(api_name, api_key, api_secret);
-        Cloudinary cloudinary= new Cloudinary(account);
-        cloudinary.Api.Secure = true;
-
-        using var stream = new MemoryStream();
-        await image.CopyToAsync(stream);
-        stream.Seek(0, SeekOrigin.Begin);
-
-        var uploadParams = new ImageUploadParams()
-        {
-            File = new FileDescription(image.FileName, stream),
-            PublicId = "games/" + image.FileName
-        };
-
-        var uploadResult = await cloudinary.UploadAsync(uploadParams);
-
-        return uploadResult.SecureUrl.AbsoluteUri;
     }
 
     private void DeleteString(GameModel model)

@@ -11,12 +11,13 @@ AutoMapperRegisterHelper.Register(services);
 services.AddControllersWithViews();
 services.AddScoped(sp => new HttpClient());
 
-services.AddCloudinarySettings(builder.Configuration);
 services.AddHttpContextAccessor();
-services.AddScoped<User>();
+services.AddCloudinarySettings(builder.Configuration);
 services.AddScoped<IAccountService, AccountService>();
 services.AddScoped<IGameService, GameService>();
 services.AddScoped<ICommentService, CommentService>();
+services.AddScoped<ICloudinaryService, CloudinaryService>();
+services.AddScoped<ICookieService, CookieService>();
 
 
 var app = builder.Build();

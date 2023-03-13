@@ -20,6 +20,7 @@ public static class AuthConfiguration
         services
             .AddIdentity<User, IdentityRole<Guid>>(opt =>
             {
+                opt.User.RequireUniqueEmail = true;
                 opt.Password.RequiredLength = 0;
                 opt.Password.RequireDigit = false;
                 opt.Password.RequireLowercase = false;

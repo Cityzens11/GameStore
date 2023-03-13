@@ -39,4 +39,11 @@ public class AccountsController : ControllerBase
         await userAccountService.Verify(userId, code);
         return Ok("Email confirmed");
     }
+
+    [HttpGet("getuser")]
+    public async Task<UserAccountResponse> GetUserByName(string userName)
+    {
+        var user = await userAccountService.GetUser(userName);
+        return mapper.Map<UserAccountResponse>(user);
+    }
 }

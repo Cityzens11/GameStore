@@ -35,11 +35,25 @@
 
                     <div>
                         <ul style="list-style-type:none" class="inline-list">
-                            @if(ViewBag.IsSigned)
+                            @{bool IsSigned = ViewBag.IsSigned ?? false;}
+                            @if(IsSigned)
                             {
                                 <li>
-                                    @ViewBag.UserName
+                                    @ViewBag.FullName
                                 </li>
+                                string image = ViewBag.Image;
+                                @if (string.IsNullOrEmpty(image))
+                                {
+                                    <li>
+                                        <img src="~/css/notavailable_av.jpg" style="border-radius:50%;" />
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <img src="@ViewBag.Image" style="border-radius:50%;" />
+                                    </li>
+                                }
                                 <li>
                                     <a class="nav-link" asp-area="" asp-controller="Accounts" asp-action="SignOut">Sign out</a>
                                 </li>
