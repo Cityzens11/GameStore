@@ -1,0 +1,15 @@
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\GameStore.Api.Settings.csproj.AssemblyReference.cache
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\GameStore.Api.Settings.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\GameStore.Api.Settings.AssemblyInfoInputs.cache
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\GameStore.Api.Settings.AssemblyInfo.cs
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\GameStore.Api.Settings.csproj.CoreCompileInputs.cache
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\bin\Debug\net7.0\GameStore.Api.Settings.deps.json
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\bin\Debug\net7.0\GameStore.Api.Settings.dll
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\bin\Debug\net7.0\GameStore.Api.Settings.pdb
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\bin\Debug\net7.0\GameStore.Settings.dll
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\bin\Debug\net7.0\GameStore.Settings.pdb
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\GameStore.Api.Settings.csproj.CopyComplete
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\GameStore.Api.Settings.dll
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\refint\GameStore.Api.Settings.dll
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\GameStore.Api.Settings.pdb
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api.Settings\obj\Debug\net7.0\ref\GameStore.Api.Settings.dll

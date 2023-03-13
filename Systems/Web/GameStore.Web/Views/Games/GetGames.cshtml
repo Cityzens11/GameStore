@@ -1,0 +1,118 @@
+﻿@model IndexViewModel
+
+<script src="~/js/maincontroller_games.js"></script>
+<link rel="stylesheet" href="~/css/Games/maincontroller_games.css" asp-append-version="true" />
+
+@if (TempData["Add"] != null)
+{
+    <h5 style="color: red;">@TempData["Add"]</h5>
+    <br />
+}
+@if (TempData["temp"] != null)
+{
+    <h5 style="color: red;">@TempData["temp"]</h5>
+    <br />
+}
+
+<div class="genre">
+    <button id="myButton" onclick="document.getElementById('myDialog').open = true;">+ Add Genre</button>
+
+    <dialog id="myDialog">
+        <p>Please select your preferences:</p>
+        @{
+            GameModel temp = new GameModel();
+        }
+        <div style="width: 100%;">
+            @foreach (var genre in temp.GenreList)
+            {
+                <label style="width: 25%; float: left;"><input type="checkbox" name="genre" value="@genre.Value">@genre.Text</label>
+            }
+        </div>
+        <div style="clear: both;"></div>
+        <button style="width:70px;" onclick="selectGenres(@Model.PageViewModel.PageNumber)">Ok</button>
+    </dialog>
+</div>
+
+<div class="search">
+    <input type="search" class="search_container" id="search_input" pattern=".{3,}" placeholder="At least 3 chars" />
+    <button onclick="searchName(@Model.PageViewModel.PageNumber)" class="search_button">Search</button>
+</div>
+
+<div class="addgamewrapper">
+    <a class="addgame" style="text-decoration:none" asp-area="" asp-controller="Games" asp-action="AddGame">Add Game</a>
+</div>
+<br />
+
+<div class="wrapper">
+    @foreach (var game in Model.Games)
+    {
+        <div class="el">
+            <div class="image-container">
+                @if(string.IsNullOrEmpty(game.ImageUri))
+                {
+                    <img class="image" src="~/css/notavailable.jpg"/>
+                    <div class="image-overlay">
+                        @if (!game.Genres.Any())
+                        {
+                            <p style="font-size: 25px;">@game.Publisher</p>
+                        }
+                        @foreach (var genre in game.Genres)
+                        {
+                            <p>@genre/</p>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <img class="image" src="@game.ImageUri">
+                    <div class="image-overlay">
+                        @if(!game.Genres.Any())
+                        {
+                            <p style="font-size: 25px;">@game.Publisher</p>
+                        }
+                        @foreach(var genre in game.Genres)
+                        {
+                            <p>@genre/</p>
+                        }
+                    </div>
+                }
+            </div>
+            <div style="color:black; font-size:1.5em">@game.Title</div>
+            <div class="viewButton">
+                <a style="text-decoration: none" target="_blank" class="button" asp-area="" asp-controller="Games" asp-action="GetGame" asp-route-gameId="@game.Id">View</a>
+            </div>
+            <div style="color:black; font-size:2em">$@game.Price</div>
+        </div>
+    }
+</div>
+<div class="navigation">
+    @{
+        string previous = string.Empty;
+        string next = string.Empty;
+    }
+    @if(Model.Filter.Genres != null){
+        string queryString = string.Empty;
+        foreach(var genre in Model.Filter.Genres)
+        {
+            queryString += "&Genres=" + genre;
+        }
+
+        previous = "/Games/GetGames?page=" + (@Model.PageViewModel.PageNumber - 1).ToString() + "&Name=" + Model.Filter.Name + queryString;
+        next = "/Games/GetGames?page=" + (@Model.PageViewModel.PageNumber + 1).ToString() + "&Name=" + Model.Filter.Name + queryString;
+    }
+    else
+    {
+        previous = "/Games/GetGames?page=" + (@Model.PageViewModel.PageNumber - 1).ToString();
+        next = "/Games/GetGames?page=" + (@Model.PageViewModel.PageNumber + 1).ToString();
+    }
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a href="@previous" class="back">Previous</a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a href="@next" class="next">Next</a>
+    }
+    <br />
+    Page Number : @Model.PageViewModel.PageNumber out of @Model.PageViewModel.TotalPages
+</div>

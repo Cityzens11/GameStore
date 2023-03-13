@@ -1,0 +1,65 @@
+﻿@model GameModel
+
+<link rel="stylesheet" href="~/css/games/maincontroller_addgame.css" asp-append-version="true" />
+
+<h2>Add a new game</h2>
+
+<form asp-action="AddGame" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Publisher"></label>
+        <input asp-for="Publisher" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" class="form-control-file" type="file" accept=".jpg,.jpeg,.png" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Genres">Genres</label>
+        <br />
+        @{
+            int i = 1;
+        }
+        @foreach (var genre in Model.GenreList)
+        {
+            <div class="form-check @((i - 1) % 5 == 0 ? "form-check-inline-five" : "form-check-inline")">
+                <input class="form-check-input" type="checkbox" id="@genre.Value" name="Genres" value="@genre.Value">
+                <label class="form-check-label" for="@genre.Value">@genre.Value</label>
+            </div>
+            i++;
+        }
+        <input type="hidden" asp-for="Genres" />
+        <span asp-validation-for="Genres" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+@section scripts
+{
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+}

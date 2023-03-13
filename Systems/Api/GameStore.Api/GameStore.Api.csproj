@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>api.xml</DocumentationFile>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
+    <PackageReference Include="Serilog.Expressions" Version="3.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Data\GameStore.Context.Migrations\GameStore.Context.Migrations\GameStore.Context.Migrations.csproj" />
+    <ProjectReference Include="..\..\..\Data\GameStore.Context\GameStore.Context.csproj" />
+    <ProjectReference Include="..\..\..\Services\GameStore.Services.Comments\GameStore.Services.Comments.csproj" />
+    <ProjectReference Include="..\..\..\Services\GameStore.Services.Games\GameStore.Services.Games.csproj" />
+    <ProjectReference Include="..\..\..\Services\GameStore.Services.Settings\GameStore.Services.Settings.csproj" />
+    <ProjectReference Include="..\..\..\Services\GameStore.Services.UserAccount\GameStore.Services.UserAccount.csproj" />
+    <ProjectReference Include="..\..\..\Shared\GameStore.Common\GameStore.Common.csproj" />
+    <ProjectReference Include="..\..\..\Shared\GameStore.Settings\GameStore.Settings.csproj" />
+    <ProjectReference Include="..\GameStore.Api.Settings\GameStore.Api.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

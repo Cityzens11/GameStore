@@ -1,0 +1,60 @@
+.image {
+    border-radius: 7px;
+    opacity: 1;
+    transition: .5s ease;
+}
+
+.title{
+    float: left;
+}
+
+.editdiv {
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+.edit {
+    background-color: #1337ac;
+    padding: 5px 20px;
+    border: 2px;
+    color: white;
+    transition-duration: 0.4s;
+}
+.buy:hover {
+    color: #808080;
+}
+.buy {
+    background-color: #05b213;
+    padding: 5px 20px;
+    border: 2px;
+    color: white;
+    transition-duration: 0.4s;
+}
+.buy:hover {
+    color: #808080;
+}
+.delete {
+    background-color: #ee0d0d;
+    padding: 5px 20px;
+    border: 2px;
+    color: white;
+    transition-duration: 0.4s;
+}
+
+.delete:hover {
+    background-color: #ca1e1e;
+    color: #808080;
+}
+
+
+.description{
+    width: 600px;
+}
+
+.genre {
+    color: white;
+    display: inline-block;
+    border-radius: 5px;
+    border: 4px dotted aqua;
+    background-color: aqua;
+}

@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GameStore</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GameStore.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Games" asp-action="GetGames">Game store</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Main" asp-action="Games">Games</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Main" asp-action="Games">Community</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Main" asp-action="Games">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Main" asp-action="Games">Support</a>
+                        </li>
+                    </ul>
+
+                    <div>
+                        <ul style="list-style-type:none" class="inline-list">
+                            @if(ViewBag.IsSigned)
+                            {
+                                <li>
+                                    @ViewBag.UserName
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="" asp-controller="Accounts" asp-action="SignOut">Sign out</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a class="nav-link1" asp-area="">Sign in</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="" asp-controller="Accounts" asp-action="Register">Sign up</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <dialog class="dialog-box" id="sign-in-dialog">
+                <h2>Sign In</h2>
+                <form asp-action="SignIn" asp-controller="Accounts" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required />
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" minlength="5" maxlength="50" required />
+                    
+                    <label for="remember">Remember me</label>
+                    <input type="checkbox" id="remember" name="Remember"/>
+                    
+                    <div class="button-group">
+                        <a style="text-decoration: none;" class="closeButton">Cancel</a>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </dialog>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - GameStore - <a asp-area="" asp-controller="Main" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,920 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api\\GameStore.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj",
+        "projectName": "GameStore.Context.Entities",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj",
+        "projectName": "GameStore.Context.Migrations",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj",
+        "projectName": "GameStore.Context",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Comments\\GameStore.Services.Comments.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Comments\\GameStore.Services.Comments.csproj",
+        "projectName": "GameStore.Services.Comments",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Comments\\GameStore.Services.Comments.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Comments\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.4.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Games\\GameStore.Services.Games.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Games\\GameStore.Services.Games.csproj",
+        "projectName": "GameStore.Services.Games",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Games\\GameStore.Services.Games.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Games\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.4.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Settings\\GameStore.Services.Settings.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Settings\\GameStore.Services.Settings.csproj",
+        "projectName": "GameStore.Services.Settings",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Settings\\GameStore.Services.Settings.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Settings\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.UserAccount\\GameStore.Services.UserAccount.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.UserAccount\\GameStore.Services.UserAccount.csproj",
+        "projectName": "GameStore.Services.UserAccount",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.UserAccount\\GameStore.Services.UserAccount.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.UserAccount\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[108.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj",
+        "projectName": "GameStore.Common",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.4.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj",
+        "projectName": "GameStore.Settings",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api.Settings\\GameStore.Api.Settings.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api.Settings\\GameStore.Api.Settings.csproj",
+        "projectName": "GameStore.Api.Settings",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api.Settings\\GameStore.Api.Settings.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api.Settings\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api\\GameStore.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api\\GameStore.Api.csproj",
+        "projectName": "GameStore.Api",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api\\GameStore.Api.csproj",
+        "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Comments\\GameStore.Services.Comments.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Comments\\GameStore.Services.Comments.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Games\\GameStore.Services.Games.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Games\\GameStore.Services.Games.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Settings\\GameStore.Services.Settings.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Settings\\GameStore.Services.Settings.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.UserAccount\\GameStore.Services.UserAccount.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.UserAccount\\GameStore.Services.UserAccount.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Common\\GameStore.Common.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Shared\\GameStore.Settings\\GameStore.Settings.csproj"
+              },
+              "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api.Settings\\GameStore.Api.Settings.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api.Settings\\GameStore.Api.Settings.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.4.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
+            "IdentityServer4.AccessTokenValidation": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.17.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "Serilog.Enrichers.CorrelationId": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Serilog.Expressions": {
+              "target": "Package",
+              "version": "[3.4.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[7.0.6, )"
+            },
+            "Swashbuckle.AspNetCore.Newtonsoft": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "GameStore.Services.Genres/1.0.0": {
+        "dependencies": {
+          "GameStore.Common": "1.0.0.0",
+          "GameStore.Context": "1.0.0.0",
+          "GameStore.Context.Entities": "1.0.0.0"
+        },
+        "runtime": {
+          "GameStore.Services.Genres.dll": {}
+        }
+      },
+      "GameStore.Common/1.0.0.0": {
+        "runtime": {
+          "GameStore.Common.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "GameStore.Context/1.0.0.0": {
+        "runtime": {
+          "GameStore.Context.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "GameStore.Context.Entities/1.0.0.0": {
+        "runtime": {
+          "GameStore.Context.Entities.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "GameStore.Settings/1.0.0.0": {
+        "runtime": {
+          "GameStore.Settings.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GameStore.Services.Genres/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameStore.Common/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameStore.Context/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameStore.Context.Entities/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameStore.Settings/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

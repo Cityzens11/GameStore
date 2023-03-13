@@ -1,0 +1,52 @@
+﻿@model GameAndComments
+
+<link rel="stylesheet" href="~/css/Games/maincontroller_game.css" asp-append-version="true" />
+
+<div class="container">
+    <div>
+        @if (string.IsNullOrEmpty(Model.Game.ImageUri))
+        {
+            <img class="image" src="~/css/notavailable.jpg"/>
+        }
+        <img class="image" src="@Model.Game.ImageUri" />
+    </div>
+    <div class="title" style="color:black; font-size:1.5em">
+        @Model.Game.Title
+    </div>
+
+    <div class="editdiv">
+        <a class="edit" style="text-decoration:none" asp-area="" asp-controller="Games" asp-action="UpdateGame" asp-route-gameId="@Model.Game.Id">Edit</a>
+        <a class="buy" style="text-decoration:none" asp-area="" asp-controller="" asp-action="">Buy</a>
+        <a class="delete" style="text-decoration:none" asp-area="" asp-controller="Games" asp-action="DeleteGame" asp-route-gameId="@Model.Game.Id">Delete</a>
+    </div>
+
+    <div class="price" style="color:black; font-size:2em">
+        $@Model.Game.Price
+    </div>
+    <br />
+
+    <hr size="7" width="90%" color="black">
+    @foreach(var genre in Model.Game.Genres)
+    {
+        <div class="genre">@genre</div>
+    }
+    <div class="description">
+        @Model.Game.Description
+    </div>
+
+    <br />
+    <br />
+
+    @foreach(var comment in Model.Comments)
+    {
+        <br />
+        <hr size="7" width="90%" color="black">
+        <br />
+        <p>@comment.User</p>
+        <p>@comment.Body</p>
+        <p>@comment.CommentedTime.ToShortDateString() @comment.CommentedTime.ToShortTimeString()</p>
+    }
+
+    <br />
+    <br />
+</div>

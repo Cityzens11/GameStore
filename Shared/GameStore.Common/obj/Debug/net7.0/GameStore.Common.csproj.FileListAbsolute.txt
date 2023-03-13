@@ -1,0 +1,12 @@
+C:\Users\Public\GameStore\Shared\GameStore.Common\bin\Debug\net7.0\GameStore.Common.deps.json
+C:\Users\Public\GameStore\Shared\GameStore.Common\bin\Debug\net7.0\GameStore.Common.dll
+C:\Users\Public\GameStore\Shared\GameStore.Common\bin\Debug\net7.0\GameStore.Common.pdb
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\GameStore.Common.csproj.AssemblyReference.cache
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\GameStore.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\GameStore.Common.AssemblyInfoInputs.cache
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\GameStore.Common.AssemblyInfo.cs
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\GameStore.Common.csproj.CoreCompileInputs.cache
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\GameStore.Common.dll
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\refint\GameStore.Common.dll
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\GameStore.Common.pdb
+C:\Users\Public\GameStore\Shared\GameStore.Common\obj\Debug\net7.0\ref\GameStore.Common.dll

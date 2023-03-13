@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "2RVYZ4MFnsDEe6FEXfXBRI+p1UbUXhAGQDWPZ8YFquo=",
+  "Source": "GameStore.Api",
+  "BasePath": "_content/GameStore.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "GameStore.Api\\wwwroot",
+      "Source": "GameStore.Api",
+      "ContentRoot": "C:\\Users\\Public\\GameStore\\Systems\\Api\\GameStore.Api\\wwwroot\\",
+      "BasePath": "_content/GameStore.Api",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

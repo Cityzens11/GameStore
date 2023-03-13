@@ -1,0 +1,56 @@
+﻿@model AccountModel
+
+@if (TempData["temp"] != null)
+{
+    <h5 style="color: red;">@TempData["temp"]</h5>
+    <br />
+}
+
+<link rel="stylesheet" href="~/css/Accounts/accountscontroller_register.css" asp-append-version="true" />
+
+<div class="container">
+    <form method="post" asp-action="Register">
+        <div class="div">
+            <label class="label" asp-for="FirstName">First Name:</label>
+            <input class="input" asp-for="FirstName" type="text" id="FirstName" name="FirstName" required>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="div">
+            <label class="label" asp-for="LastName">Last Name:</label>
+            <input class="input" asp-for="FirstName" type="text" id="LastName" name="LastName" required>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="div">
+            <label class="label" asp-for="UserName">Username:</label>
+            <input class="input" asp-for="FirstName" type="text" id="UserName" name="UserName" required>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="div">
+            <label class="label" asp-for="Email">Email:</label>
+            <input class="input" asp-for="FirstName" type="email" id="Email" name="Email" required>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="div">
+            <label class="label" asp-for="Password">Password:</label>
+            <input class="input" asp-for="FirstName" type="password" id="Password" name="Password" minlength="5" maxlength="50" required>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="div">
+            <label class="label" asp-for="UserRole">Role:</label>
+            <select class="input" asp-for="UserRole" name="UserRole" required>
+                <option value="customer">Customer</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+        <a style="text-decoration:none;" class="a" asp-action="GetGames" asp-controller="Games">Cancel</a>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+@section scripts
+    {
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+}
