@@ -1,0 +1,69 @@
+﻿@model CommentHierarchy
+
+<link rel="stylesheet" href="~/css/Games/maincontroller_game.css" asp-append-version="true" />
+
+@if (Model.Comments.Where(c => c.ParentCommentId == Model.ParentId).Count() != 0)
+{
+    <ul>
+        @foreach (var comment in Model.Comments.Where(c => c.ParentCommentId == Model.ParentId))
+        {
+            <li>
+                <div>
+                    <hr size="7" width="100%" color="black">
+                    <br />
+                    <p>@comment.User</p>
+                    <p>@comment.Body</p>
+                    @{var timeElapsed = DateTime.Now - @comment.CommentedTime;
+                    int totalDays = (int)timeElapsed.TotalDays;
+                    int totalHours = (int)timeElapsed.TotalHours % 24;
+                    int totalMinutes = (int)timeElapsed.TotalMinutes % 60;}
+                    <p>@totalDays Days @totalHours Hours @totalMinutes Minutes ago</p>
+                    <a href="#" class="reply" data-comment-id="@comment.Id">Reply</a>
+                    @if (comment.User.Equals(ViewBag.UserName))
+                    {
+                    <a href="#" class="edit-comment" data-comment-id="@comment.Id">Edit</a>
+                    <a style="color: red;" asp-action="DeleteComment" asp-controller="Comments" asp-route-commentId="@comment.Id" asp-route-gameId="@comment.GameId">Delete</a>
+                    <div id="edit-@comment.Id" style="display:none;">
+                        <form method="post" asp-action="EditComment" asp-controller="Comments">
+                            <div class="form-wrapper">
+                                <label for="body">Edit Comment:</label>
+                                <input type="hidden" name="Id" value="@comment.Id" />
+                                <textarea name="Body" id="edit-body" placeholder="Write a comment" required>@comment.Body</textarea>
+                                <input type="hidden" name="User" value="@ViewBag.UserName" />
+                                <input type="hidden" name="CommentedTime" value="@DateTime.Now" />
+                                <input type="hidden" name="GameId" value="@comment.GameId" />
+                                <input type="hidden" name="ParentCommentId" value="@comment.ParentCommentId" />
+                                <button type="submit">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                    }
+                    <div id="comment-@comment.Id" style="display:none;">
+                        <form method="post" asp-action="AddComment" asp-controller="Comments">
+                            <div class="form-wrapper">
+                                <label for="Body">Comment:</label>
+                                <textarea name="Body" id="Body" placeholder="Write a comment" required></textarea>
+                                <input type="hidden" name="User" value="@ViewBag.UserName" />
+                                <input type="hidden" name="CommentedTime" value="@DateTime.Now" />
+                                <input type="hidden" name="GameId" value="@comment.GameId" />
+                                <input type="hidden" name="ParentCommentId" value="@comment.Id" />
+                                <button type="submit">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                    @await Html.PartialAsync("_CommentChildren", new CommentHierarchy { ParentId = comment.Id, Comments = Model.Comments })
+                </div>
+            </li>
+        }
+    </ul>
+}
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@section scripts
+{
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+}

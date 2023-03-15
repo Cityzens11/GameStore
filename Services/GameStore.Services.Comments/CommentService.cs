@@ -79,11 +79,17 @@ public class CommentService : ICommentService
     public async Task DeleteComment(int commentId)
     {
         using var context = await contextFactory.CreateDbContextAsync();
-
-        var comment = await context.Comments.FirstOrDefaultAsync(x => x.Id.Equals(commentId))
+        var comment = await context.Comments
+            .Include(c => c.ChildComments)
+            .FirstOrDefaultAsync(x => x.Id.Equals(commentId))
             ?? throw new ProcessException($"The comment (id: {commentId}) was not found");
 
-        context.Remove(comment);
-        context.SaveChanges();
+        foreach (var childComment in comment.ChildComments.ToList())
+        {
+            await DeleteComment(childComment.Id);
+        }
+        comment.ChildComments = null;
+        context.Comments.Remove(comment);
+        await context.SaveChangesAsync();
     }
 }

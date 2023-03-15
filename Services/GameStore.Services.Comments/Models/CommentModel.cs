@@ -6,10 +6,12 @@ using AutoMapper;
 public class CommentModel
 {
     public int Id { get; set; }
-    public string User { get; set; } = string.Empty;
-    public string Body { get; set; } = string.Empty;
+    public string User { get; set; }
+    public string Body { get; set; }
     public DateTime TimeStamp { get; set; }
+
     public int GameId { get; set; }
+    public int? ParentCommentId { get; set; }
 }
 
 public class CommentModelProfile : Profile

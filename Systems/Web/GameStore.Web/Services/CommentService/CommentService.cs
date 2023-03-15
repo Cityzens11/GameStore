@@ -65,9 +65,9 @@ public class CommentService : ICommentService
         }
     }
 
-    public async Task EditCommentAsync(int commentId, CommentModel model)
+    public async Task EditCommentAsync(CommentModel model)
     {
-        string url = $"{Settings.ApiRoot}/v1/comments/{commentId}";
+        string url = $"{Settings.ApiRoot}/v1/comments/{model.Id}";
 
         var body = JsonSerializer.Serialize(model);
         var request = new StringContent(body, Encoding.UTF8, "application/json");

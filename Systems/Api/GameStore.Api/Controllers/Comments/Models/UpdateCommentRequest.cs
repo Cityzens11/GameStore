@@ -6,10 +6,12 @@ using GameStore.Services.Comments;
 
 public class UpdateCommentRequest
 {
+    public int Id { get; set; }
     public string User { get; set; } = string.Empty;
     public string Body { get; set; } = string.Empty;
     public DateTime CommentedTime { get; set; }
     public int GameId { get; set; }
+    public int? ParentCommentId { get; set; }
 }
 
 public class UpdateCommentResponseValidator : AbstractValidator<UpdateCommentRequest>

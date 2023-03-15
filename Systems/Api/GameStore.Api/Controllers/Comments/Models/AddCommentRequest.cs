@@ -6,10 +6,12 @@ using GameStore.Services.Comments;
 
 public class AddCommentRequest
 {
+    public int? Id { get; set; }
     public string User { get; set; } = string.Empty;
     public string Body { get; set; } = string.Empty;
     public DateTime CommentedTime { get; set; }
     public int GameId { get; set; }
+    public int? ParentCommentId { get; set; }
 }
 
 public class AddCommentResponseValidator : AbstractValidator<AddCommentRequest>
@@ -21,7 +23,7 @@ public class AddCommentResponseValidator : AbstractValidator<AddCommentRequest>
 
         RuleFor(x => x.Body)
             .NotEmpty().WithMessage("Body is required.")
-            .MaximumLength(400).WithMessage("Body is long.");
+            .MaximumLength(600).WithMessage("Body is long.");
 
         RuleFor(x => x.CommentedTime)
             .NotEmpty().WithMessage("CommentedTime is required.");

@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Data\GameStore.Context.Migrations\GameStore.Context.Migrations\GameStore.Context.Migrations.csproj" />
+    <ProjectReference Include="..\..\..\Data\GameStore.Context.Migrations\GameStore.Context.Migrations.csproj" />
     <ProjectReference Include="..\..\..\Data\GameStore.Context\GameStore.Context.csproj" />
     <ProjectReference Include="..\..\..\Services\GameStore.Services.Comments\GameStore.Services.Comments.csproj" />
     <ProjectReference Include="..\..\..\Services\GameStore.Services.Games\GameStore.Services.Games.csproj" />

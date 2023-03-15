@@ -40,6 +40,7 @@ public class MainDbContext : IdentityDbContext<User, UserRole, Guid>
 
         modelBuilder.Entity<Comment>().ToTable("comments");
         modelBuilder.Entity<Comment>().HasOne(x => x.Game).WithMany(x => x.Comments).HasForeignKey(x => x.GameId).OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<Comment>().Property(x => x.Body).HasMaxLength(600);
     }
 }
 

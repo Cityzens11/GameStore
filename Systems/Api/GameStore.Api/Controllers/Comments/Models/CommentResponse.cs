@@ -15,7 +15,9 @@ public class CommentResponse
     public string User { get; set; }
     public string Body { get; set; }
     public DateTime CommentedTime { get; set; }
+
     public virtual int GameId { get; set; }
+    public int? ParentCommentId { get; set; }
 }
 
 public class CommentResponseProfile : Profile

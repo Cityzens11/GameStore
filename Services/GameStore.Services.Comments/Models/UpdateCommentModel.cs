@@ -10,6 +10,7 @@ public class UpdateCommentModel
     public string Body { get; set; } = string.Empty;
     public DateTime TimeStamp { get; set; }
     public int GameId { get; set; }
+    public int? ParentCommentId { get; set; }
 }
 
 public class UpdateCommentModelValidator : AbstractValidator<UpdateCommentModel>

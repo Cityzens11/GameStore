@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj": {
+    "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj",
+        "projectUniqueName": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj",
         "projectName": "GameStore.Context.Migrations",
-        "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj",
+        "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj",
         "packagesPath": "C:\\Users\\Cityzen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\obj\\",
+        "outputPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Cityzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,6 +93,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Entities\\GameStore.Context.Entities.csproj"
+              },
               "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj": {
                 "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj"
               }
@@ -111,23 +114,23 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             }
           },
           "imports": [
@@ -798,8 +801,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj": {
-                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj"
+              "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj": {
+                "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj"
               },
               "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj": {
                 "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj"

@@ -6,10 +6,12 @@ using GameStore.Context.Entities;
 
 public class AddCommentModel
 {
+    public int? Id { get; set; }
     public string User { get; set; } = string.Empty;
     public string Body { get; set; } = string.Empty;
     public DateTime TimeStamp { get; set; }
     public int GameId { get; set; }
+    public int? ParentCommentId { get; set; }
 }
 
 public class AddCommentModelValidator : AbstractValidator<AddCommentModel>
@@ -21,7 +23,7 @@ public class AddCommentModelValidator : AbstractValidator<AddCommentModel>
 
         RuleFor(x => x.Body)
             .NotEmpty().WithMessage("Body is required.")
-            .MaximumLength(400).WithMessage("Body is long.");
+            .MaximumLength(600).WithMessage("Body is long.");
 
         RuleFor(x => x.TimeStamp)
             .NotEmpty().WithMessage("TimeStamp is required.");
