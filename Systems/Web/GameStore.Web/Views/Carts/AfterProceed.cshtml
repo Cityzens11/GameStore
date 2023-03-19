@@ -1,0 +1,100 @@
+﻿@model ProceedModel
+
+@{
+    ViewData["Title"] = "After Proceed";
+}
+<style>
+    .container {
+        margin-top: 30px;
+    }
+
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+        border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .card {
+        margin-bottom: 30px;
+        border: 1px solid #e5e5e5;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+    }
+
+    .card-body {
+        padding: 1.25rem;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="alert alert-success" role="alert">
+                        Your order has been processed successfully!
+                    </div>
+
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>First Name</th>
+                                <td>@Model.FirstName</td>
+                            </tr>
+                            <tr>
+                                <th>Last Name</th>
+                                <td>@Model.LastName</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>@Model.Phone</td>
+                            </tr>
+                            <tr>
+                                <th>Payment Method</th>
+                                <td>@Model.Payment</td>
+                            </tr>
+                            <tr>
+                                <th>Comments</th>
+                                <td>@Model.Comments</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <a href="@Url.Action("GetGames", "Games")" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -94,6 +94,35 @@
             Game title
             </summary>
         </member>
+        <member name="T:GameStore.Api.Controllers.CartsController">
+            <summary>
+            Games controller
+            </summary>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Forbidden</response>
+            <response code="404">Not Found</response>
+        </member>
+        <member name="M:GameStore.Api.Controllers.CartsController.AddCart(System.String)">
+            <summary>
+            Creates a new cart
+            </summary>
+            <param name="userName">Name of a user</param>
+            <returns>Cart Response</returns>
+        </member>
+        <member name="M:GameStore.Api.Controllers.CartsController.GetCart(System.Int32)">
+            <summary>
+            Get user cart
+            </summary>
+            <param name="userId">Id of user</param>
+            <response code="200">Cart Response</response>
+        </member>
+        <member name="M:GameStore.Api.Controllers.CartsController.GetCartItemsCount(System.Int32)">
+            <summary>
+            Get number of cartitems in a cart in db
+            </summary>
+            <returns>number of games</returns>
+        </member>
         <member name="T:GameStore.Api.Controllers.CommentsController">
             <summary>
             Games controller

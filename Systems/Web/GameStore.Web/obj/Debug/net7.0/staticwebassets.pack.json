@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\css\\Accounts\\accountscontroller_register.css"
     },
     {
+      "Id": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\Carts\\cartscontroller_cart.css",
+      "PackagePath": "staticwebassets\\css\\Carts\\cartscontroller_cart.css"
+    },
+    {
+      "Id": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\Carts\\cartscontroller_proceed.css",
+      "PackagePath": "staticwebassets\\css\\Carts\\cartscontroller_proceed.css"
+    },
+    {
       "Id": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\Games\\maincontroller_addgame.css",
       "PackagePath": "staticwebassets\\css\\Games\\maincontroller_addgame.css"
     },
@@ -23,6 +31,10 @@
     {
       "Id": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\Games\\maincontroller_updategame.css",
       "PackagePath": "staticwebassets\\css\\Games\\maincontroller_updategame.css"
+    },
+    {
+      "Id": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\cart.png",
+      "PackagePath": "staticwebassets\\css\\cart.png"
     },
     {
       "Id": "C:\\Users\\Public\\GameStore\\Systems\\Web\\GameStore.Web\\wwwroot\\css\\notavailable.jpg",

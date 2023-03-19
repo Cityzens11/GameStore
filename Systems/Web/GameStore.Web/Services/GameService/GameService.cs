@@ -53,7 +53,7 @@ public class GameService : IGameService
             }
             url += $"&offset={offset}&limit={limit}";
 
-            url = $"{Settings.ApiRoot}/v1/games/aaa?" + url;
+            url = $"{Settings.ApiRoot}/v1/games/filter?" + url;
         }
         
         var response = await _httpClient.GetAsync(url);
@@ -156,7 +156,7 @@ public class GameService : IGameService
                 url += $"&Genres={string.Join("&", filter.Genres)}";
             }
 
-            url = $"{Settings.ApiRoot}/v1/games/count/aaa?" + url;
+            url = $"{Settings.ApiRoot}/v1/games/count/filter?" + url;
         }
 
         var response = await _httpClient.GetAsync(url);

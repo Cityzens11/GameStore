@@ -9,11 +9,13 @@ public class AccountsController : Controller
 {
     private readonly IAccountService _accountService;
     private readonly ICookieService _cookieService;
+    private readonly ICartService _cartService;
 
-    public AccountsController(IAccountService accountService, ICookieService cookieService)
+    public AccountsController(IAccountService accountService, ICookieService cookieService, ICartService cartService)
     {
         _accountService = accountService;
         _cookieService = cookieService;
+        _cartService = cartService;
     }
 
     [HttpGet("Register")]
@@ -38,12 +40,13 @@ public class AccountsController : Controller
             return View(model);
         }
 
-        bool ok = await _accountService.RegisterAsync(model);
-        if(!ok)
+        if (!await _accountService.RegisterAsync(model))
         {
             TempData["temp"] = "Could not create new account\nCheck input values for validity";
             return View(model);
         }
+
+        await _cartService.CreateCartAsync(model.UserName);
 
         TempData["temp"] = "Check your email for further instructions";
         return RedirectToAction("GetGames", "Games");
@@ -70,23 +73,11 @@ public class AccountsController : Controller
         }
 
         var user = await _accountService.GetUserAsync(model.UserName);
+        var count = await _cartService.GetCartItemsCountAsync(user.CartId);
 
-        Response.Cookies.Append("token", accessToken, new CookieOptions
-        {
-            Expires = remember ? DateTimeOffset.Now.AddMinutes(20) : DateTimeOffset.Now.AddDays(7)
-        });
-        Response.Cookies.Append("username", user.UserName, new CookieOptions
-        {
-            Expires = remember ? DateTimeOffset.Now.AddMinutes(20) : DateTimeOffset.Now.AddDays(7)
-        });
-        Response.Cookies.Append("fullname", user.FullName, new CookieOptions
-        {
-            Expires = remember ? DateTimeOffset.Now.AddMinutes(20) : DateTimeOffset.Now.AddDays(7)
-        });
-        Response.Cookies.Append("image", user.ImageUri, new CookieOptions
-        {
-            Expires = remember ? DateTimeOffset.Now.AddMinutes(20) : DateTimeOffset.Now.AddDays(7)
-        });
+        var keys =  _cookieService.GetKeys();
+        var values = _cookieService.GetValues(user, accessToken, count);
+        _cookieService.SetCookies(keys, values, remember);
 
         return RedirectToAction("GetGames", "Games");
     }
@@ -97,8 +88,7 @@ public class AccountsController : Controller
         if (!_cookieService.IsSigned())
             return BadRequest();
 
-        Response.Cookies.Delete("token");
-        Response.Cookies.Delete("username");
+        _cookieService.DeleteCookies();
         return RedirectToAction("GetGames", "Games");
     }
 }

@@ -14,6 +14,7 @@
           "GameStore.Common": "1.0.0",
           "GameStore.Context": "1.0.0",
           "GameStore.Context.Migrations": "1.0.0",
+          "GameStore.Services.Carts": "1.0.0",
           "GameStore.Services.Comments": "1.0.0",
           "GameStore.Services.Games": "1.0.0",
           "GameStore.Services.Settings": "1.0.0",
@@ -1263,6 +1264,20 @@
           "GameStore.Context.Migrations.dll": {}
         }
       },
+      "GameStore.Services.Carts/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "FluentValidation": "11.4.0",
+          "GameStore.Common": "1.0.0",
+          "GameStore.Context": "1.0.0",
+          "GameStore.Context.Entities": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.4"
+        },
+        "runtime": {
+          "GameStore.Services.Carts.dll": {}
+        }
+      },
       "GameStore.Services.Comments/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
@@ -1303,6 +1318,7 @@
       "GameStore.Services.UserAccount/1.0.0": {
         "dependencies": {
           "GameStore.Common": "1.0.0",
+          "GameStore.Context": "1.0.0",
           "GameStore.Context.Entities": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
           "RestSharp": "108.0.3"
@@ -2249,6 +2265,11 @@
       "sha512": ""
     },
     "GameStore.Context.Migrations/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameStore.Services.Carts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

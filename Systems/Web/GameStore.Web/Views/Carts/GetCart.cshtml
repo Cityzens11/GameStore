@@ -1,0 +1,87 @@
+﻿@model CartModel
+
+<link rel="stylesheet" href="~/css/Carts/cartscontroller_cart.css" asp-append-version="true" />
+
+<h3>Your Cart</h3>
+@{
+    float totalPrice = 0;
+    foreach (var item in Model.CartItems)
+    {
+        totalPrice += item.Quantity * item.Price;
+    }
+}
+<div class="proceed-wrapper">
+    <h4>Total: $@totalPrice</h4>
+    <a class="proceed" style="text-decoration:none" asp-area="" asp-controller="Carts" asp-action="Proceed">Proceed</a>
+</div>
+
+<br />
+
+@foreach (var item in Model.CartItems)
+{
+    <div class="cart-item" data-id="@item.Id">
+        <img src="@item.ImageUri" />
+        <div class="cart-item-details">
+            <h4>@item.Title</h4>
+            <div class="cart-item-totalprice">
+                @{var total = item.Price * item.Quantity;}
+                <p>Total: $@total</p>
+            </div>
+            <div class="quantity">
+                <button class="minus" data-id="@item.Id" data-operation="decrement">-</button>
+                <span class="quantity-value">@item.Quantity</span>
+                <button class="plus" data-id="@item.Id" data-operation="increment">+</button>
+            </div>
+            <p class="price">$@item.Price</p>
+            <div class="cart-item-button">
+                <a asp-action="DeleteCartItem" asp-controller="Carts" asp-route-itemId="@item.Id" class="remove" style="text-decoration: none;" data-id="@item.Id">Remove</a>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function TODO(itemId, quantity) {
+            $.ajax({
+                url: '/Carts/UpdateCart',
+                type: 'POST',
+                data: { itemId: itemId, quantity: quantity },
+                success: function (result) {
+                    // update the total on the page
+                    $('#total').text('$' + result.total.toFixed(2));
+                },
+                error: function (xhr, status, error) {
+                    // handle errors here
+                }
+            });
+        }
+
+        // select the plus and minus buttons
+        var plusButton = $('.cart-item-details .quantity .plus');
+        var minusButton = $('.cart-item-details .quantity .minus');
+
+        // add click event listeners to the buttons
+        plusButton.click(function () {
+            var item = $(this).closest('.cart-item');
+            var itemId = item.data('id');
+            var quantity = parseInt(item.find('.quantity-value').text());
+            quantity++;
+            item.find('.quantity-value').text(quantity);
+            TODO(itemId, quantity);
+        });
+
+        minusButton.click(function () {
+            var item = $(this).closest('.cart-item');
+            var itemId = item.data('id');
+            var quantity = parseInt(item.find('.quantity-value').text());
+            if (quantity > 1) {
+                quantity--;
+                item.find('.quantity-value').text(quantity);
+                TODO(itemId, quantity);
+            }
+        });
+    });
+</script>

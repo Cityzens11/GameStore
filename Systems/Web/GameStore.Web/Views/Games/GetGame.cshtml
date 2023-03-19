@@ -26,7 +26,7 @@
 
     <div class="editdiv">
         <a class="edit" style="text-decoration:none" asp-area="" asp-controller="Games" asp-action="UpdateGame" asp-route-gameId="@Model.Game.Id">Edit</a>
-        <a class="buy" style="text-decoration:none" asp-area="" asp-controller="" asp-action="">Buy</a>
+        <a class="buy" style="text-decoration:none" asp-area="" asp-controller="Carts" asp-action="AddCartItem" asp-route-cartId="@ViewBag.CartId" asp-route-gameId="@Model.Game.Id">Buy</a>
         <a class="delete" style="text-decoration:none" asp-area="" asp-controller="Games" asp-action="DeleteGame" asp-route-gameId="@Model.Game.Id">Delete</a>
     </div>
 

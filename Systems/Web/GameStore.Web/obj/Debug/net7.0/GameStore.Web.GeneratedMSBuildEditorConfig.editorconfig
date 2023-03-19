@@ -20,6 +20,18 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Public/GameStore/Systems/Web/GameStore.Web/Views/Carts/AfterProceed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcQWZ0ZXJQcm9jZWVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Public/GameStore/Systems/Web/GameStore.Web/Views/Carts/GetCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcR2V0Q2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Public/GameStore/Systems/Web/GameStore.Web/Views/Carts/Proceed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcUHJvY2VlZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Public/GameStore/Systems/Web/GameStore.Web/Views/Games/AddGame.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZXNcQWRkR2FtZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

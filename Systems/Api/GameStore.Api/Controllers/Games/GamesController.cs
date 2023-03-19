@@ -61,7 +61,7 @@ public class GamesController : ControllerBase
     /// <param name="limit">Count elements on the page</param>
     /// <response code="200">List of GameResponses</response>
     [ProducesResponseType(typeof(IEnumerable<GameResponse>), 200)]
-    [HttpGet("aaa")]
+    [HttpGet("filter")]
     public async Task<IEnumerable<GameResponse>> GetGames([FromQuery] Filter filter, [FromQuery] int offset = 0, [FromQuery] int limit = 12)
     {
         var games = await gameService.GetGames(filter, offset, limit);
@@ -87,7 +87,7 @@ public class GamesController : ControllerBase
     /// </summary>
     /// <returns>number of games</returns>
     [ProducesResponseType(typeof(int), 200)]
-    [HttpGet("count/aaa")]
+    [HttpGet("count/filter")]
     public async Task<int> GetGamesCount([FromQuery] Filter filter)
     {
         int count = await gameService.GetGamesCount(filter);

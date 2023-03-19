@@ -15,3 +15,7 @@ C:\Users\Public\GameStore\Services\GameStore.Services.UserAccount\obj\Debug\net7
 C:\Users\Public\GameStore\Services\GameStore.Services.UserAccount\obj\Debug\net7.0\refint\GameStore.Services.UserAccount.dll
 C:\Users\Public\GameStore\Services\GameStore.Services.UserAccount\obj\Debug\net7.0\GameStore.Services.UserAccount.pdb
 C:\Users\Public\GameStore\Services\GameStore.Services.UserAccount\obj\Debug\net7.0\ref\GameStore.Services.UserAccount.dll
+C:\Users\Public\GameStore\Services\GameStore.Services.UserAccount\bin\Debug\net7.0\GameStore.Context.dll
+C:\Users\Public\GameStore\Services\GameStore.Services.UserAccount\bin\Debug\net7.0\GameStore.Settings.dll
+C:\Users\Public\GameStore\Services\GameStore.Services.UserAccount\bin\Debug\net7.0\GameStore.Context.pdb
+C:\Users\Public\GameStore\Services\GameStore.Services.UserAccount\bin\Debug\net7.0\GameStore.Settings.pdb

@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using GameStore.Common.Filters;
-using GameStore.Common.Validator;
 using GameStore.Web.Models;
 using GameStore.Web.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System.Reflection.Metadata.Ecma335;
 
 namespace GameStore.Web.Controllers;
 
@@ -136,5 +133,7 @@ public class GamesController : Controller
         ViewBag.UserName = _cookieService.GetUserName();
         ViewBag.FullName = _cookieService.GetFullName();
         ViewBag.Image = _cookieService.GetImage();
+        ViewBag.CartId = _cookieService.GetCart();
+        ViewBag.CartCount = _cookieService.GetCartSize();
     }
 }

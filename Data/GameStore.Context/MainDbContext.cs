@@ -10,6 +10,8 @@ public class MainDbContext : IdentityDbContext<User, UserRole, Guid>
     public virtual DbSet<Game> Games { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Comment> Comments { get; set; }
+    public DbSet<Cart> Carts { get; set; }
+    public DbSet<CartItem> CartItems { get; set; }
 
     public MainDbContext() { }
     public MainDbContext(DbContextOptions<MainDbContext> options) : base(options) { }
@@ -19,6 +21,7 @@ public class MainDbContext : IdentityDbContext<User, UserRole, Guid>
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<User>().ToTable("users");
+        modelBuilder.Entity<User>().HasOne(x => x.Cart).WithOne(g => g.User).HasForeignKey<Cart>(t => t.UserId).OnDelete(DeleteBehavior.Cascade);
         modelBuilder.Entity<User>().HasIndex(u => u.UserName).IsUnique();
         modelBuilder.Entity<UserRole>().ToTable("user_roles");
         modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("user_tokens");
@@ -41,6 +44,12 @@ public class MainDbContext : IdentityDbContext<User, UserRole, Guid>
         modelBuilder.Entity<Comment>().ToTable("comments");
         modelBuilder.Entity<Comment>().HasOne(x => x.Game).WithMany(x => x.Comments).HasForeignKey(x => x.GameId).OnDelete(DeleteBehavior.Restrict);
         modelBuilder.Entity<Comment>().Property(x => x.Body).HasMaxLength(600);
+
+        modelBuilder.Entity<Cart>().ToTable("carts");
+
+        modelBuilder.Entity<CartItem>().ToTable("cartitems");
+        modelBuilder.Entity<CartItem>().HasOne(x => x.Cart).WithMany(x => x.CartItems).HasForeignKey(x => x.CartId).OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<CartItem>().HasOne(x => x.Game).WithMany(x => x.CartItems).HasForeignKey(x => x.GameId).OnDelete(DeleteBehavior.Restrict);
     }
 }
 

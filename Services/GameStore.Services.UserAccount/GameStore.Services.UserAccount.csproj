@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GameStore.Context.Entities\GameStore.Context.Entities.csproj" />
+    <ProjectReference Include="..\..\Data\GameStore.Context\GameStore.Context.csproj" />
     <ProjectReference Include="..\..\Shared\GameStore.Common\GameStore.Common.csproj" />
   </ItemGroup>
 

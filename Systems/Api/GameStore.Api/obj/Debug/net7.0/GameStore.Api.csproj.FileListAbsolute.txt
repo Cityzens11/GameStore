@@ -133,3 +133,5 @@ C:\Users\Public\GameStore\Systems\Api\GameStore.Api\bin\Debug\net7.0\GameStore.S
 C:\Users\Public\GameStore\Systems\Api\GameStore.Api\bin\Debug\net7.0\GameStore.Services.Comments.pdb
 C:\Users\Public\GameStore\Systems\Api\GameStore.Api\bin\Debug\net7.0\GameStore.Context.Migrations.dll
 C:\Users\Public\GameStore\Systems\Api\GameStore.Api\bin\Debug\net7.0\GameStore.Context.Migrations.pdb
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api\bin\Debug\net7.0\GameStore.Services.Carts.dll
+C:\Users\Public\GameStore\Systems\Api\GameStore.Api\bin\Debug\net7.0\GameStore.Services.Carts.pdb

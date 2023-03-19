@@ -11,6 +11,7 @@ public class UserAccountResponse
     public string UserName { get; set; }
     public string Email { get; set; }
     public string? ImageUri { get; set; }
+    public int CartId { get; set; }
 }
 
 public class UserAccountResponseProfile : Profile

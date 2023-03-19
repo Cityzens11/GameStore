@@ -3,8 +3,10 @@
 using AutoMapper;
 using GameStore.Common.Exceptions;
 using GameStore.Common.Validator;
+using GameStore.Context;
 using GameStore.Context.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RestSharp;
 using RestSharp.Authenticators;
 
@@ -13,15 +15,18 @@ public class UserAccountService : IUserAccountService
     private readonly IMapper mapper;
     private readonly UserManager<User> userManager;
     private readonly IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator;
+    private readonly IDbContextFactory<MainDbContext> contextFactory;
 
     public UserAccountService(
         IMapper mapper,
         UserManager<User> userManager,
-        IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator)
+        IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator,
+        IDbContextFactory<MainDbContext> contextFactory)
     {
         this.mapper = mapper;
         this.userManager = userManager;
         this.registerUserAccountModelValidator = registerUserAccountModelValidator;
+        this.contextFactory = contextFactory;
     }
 
     public async Task<UserAccountModel> GetUser(string userName)
@@ -53,7 +58,7 @@ public class UserAccountService : IUserAccountService
             Email = model.Email,
             EmailConfirmed = false,
             PhoneNumber = null,
-            PhoneNumberConfirmed = false
+            PhoneNumberConfirmed = false,
         };
         
         var result = await userManager.CreateAsync(user, model.Password);
@@ -79,7 +84,7 @@ public class UserAccountService : IUserAccountService
         var request = new RestRequest();
         request.AddParameter("domain", "", ParameterType.UrlSegment);
         request.Resource = "{domain}/messages";
-        request.AddParameter("from", "Mailgun Sandbox <>");
+        request.AddParameter("from", ">");
         request.AddParameter("to", unverifiedUser.Email);
         request.AddParameter("subject", "Verification Email");
         request.AddParameter("text", body);

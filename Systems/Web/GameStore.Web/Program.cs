@@ -16,6 +16,7 @@ services.AddCloudinarySettings(builder.Configuration);
 services.AddScoped<IAccountService, AccountService>();
 services.AddScoped<IGameService, GameService>();
 services.AddScoped<ICommentService, CommentService>();
+services.AddScoped<ICartService, CartService>();
 services.AddScoped<ICloudinaryService, CloudinaryService>();
 services.AddScoped<ICookieService, CookieService>();
 

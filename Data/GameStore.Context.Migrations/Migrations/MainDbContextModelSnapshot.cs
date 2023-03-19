@@ -37,6 +37,74 @@ namespace GameStore.Context.Migrations.Migrations
                     b.ToTable("games_genres", (string)null);
                 });
 
+            modelBuilder.Entity("GameStore.Context.Entities.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("Uid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Uid")
+                        .IsUnique();
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("carts", (string)null);
+                });
+
+            modelBuilder.Entity("GameStore.Context.Entities.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUri")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("Uid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("Uid")
+                        .IsUnique();
+
+                    b.ToTable("cartitems", (string)null);
+                });
+
             modelBuilder.Entity("GameStore.Context.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -148,6 +216,9 @@ namespace GameStore.Context.Migrations.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CartId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -372,6 +443,36 @@ namespace GameStore.Context.Migrations.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GameStore.Context.Entities.Cart", b =>
+                {
+                    b.HasOne("GameStore.Context.Entities.User", "User")
+                        .WithOne("Cart")
+                        .HasForeignKey("GameStore.Context.Entities.Cart", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("GameStore.Context.Entities.CartItem", b =>
+                {
+                    b.HasOne("GameStore.Context.Entities.Cart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("GameStore.Context.Entities.Game", "Game")
+                        .WithMany("CartItems")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Game");
+                });
+
             modelBuilder.Entity("GameStore.Context.Entities.Comment", b =>
                 {
                     b.HasOne("GameStore.Context.Entities.Game", "Game")
@@ -440,6 +541,11 @@ namespace GameStore.Context.Migrations.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GameStore.Context.Entities.Cart", b =>
+                {
+                    b.Navigation("CartItems");
+                });
+
             modelBuilder.Entity("GameStore.Context.Entities.Comment", b =>
                 {
                     b.Navigation("ChildComments");
@@ -447,7 +553,14 @@ namespace GameStore.Context.Migrations.Migrations
 
             modelBuilder.Entity("GameStore.Context.Entities.Game", b =>
                 {
+                    b.Navigation("CartItems");
+
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("GameStore.Context.Entities.User", b =>
+                {
+                    b.Navigation("Cart");
                 });
 #pragma warning restore 612, 618
         }

@@ -38,9 +38,6 @@
                             @{bool IsSigned = ViewBag.IsSigned ?? false;}
                             @if(IsSigned)
                             {
-                                <li>
-                                    @ViewBag.FullName
-                                </li>
                                 string image = ViewBag.Image;
                                 @if (string.IsNullOrEmpty(image))
                                 {
@@ -54,6 +51,15 @@
                                         <img src="@ViewBag.Image" style="border-radius:50%;" />
                                     </li>
                                 }
+                                <li>
+                                    @ViewBag.FullName
+                                </li>
+                                <li>
+                                    <a asp-action="GetCart" asp-controller="Carts" asp-route-cartId="@ViewBag.CartId">
+                                        <img src="~/css/cart.png" />
+                                    </a>
+                                    @ViewBag.CartCount
+                                </li>
                                 <li>
                                     <a class="nav-link" asp-area="" asp-controller="Accounts" asp-action="SignOut">Sign out</a>
                                 </li>

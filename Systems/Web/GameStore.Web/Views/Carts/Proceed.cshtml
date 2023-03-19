@@ -1,0 +1,43 @@
+﻿@model ProceedModel
+
+<link rel="stylesheet" href="~/css/Carts/cartscontroller_proceed.css" asp-append-version="true" />
+
+<form method="post" asp-action="proceed">
+    <div>
+        <label asp-for="FirstName">First Name:</label>
+        <input asp-for="FirstName" class="form-control" required>
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div>
+        <label asp-for="LastName">Last Name:</label>
+        <input asp-for="LastName" class="form-control" required>
+        <span asp-validation-for="LastName"></span>
+    </div>
+    <div>
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="form-control" required>
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Phone">Phone:</label>
+        <input asp-for="Phone" class="form-control" required>
+        <span asp-validation-for="Phone"></span>
+    </div>
+    <div>
+        <label asp-for="Payment">Payment:</label>
+        <select asp-for="Payment" class="form-control" required>
+            <option value="card">Card</option>
+            <option value="cash">Cash</option>
+        </select>
+        <span asp-validation-for="Payment"></span>
+    </div>
+    <div>
+        <label asp-for="Comments">Comments:</label>
+        <textarea asp-for="Comments" class="form-control" maxlength="600"></textarea>
+        <span asp-validation-for="Comments"></span>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Order</button>
+    </div>
+    <div id="messageDiv" style="display: none;"></div>
+</form>

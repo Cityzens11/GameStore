@@ -2232,6 +2232,25 @@
           "bin/placeholder/GameStore.Context.Migrations.dll": {}
         }
       },
+      "GameStore.Services.Carts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "FluentValidation": "11.4.0",
+          "GameStore.Common": "1.0.0",
+          "GameStore.Context": "1.0.0",
+          "GameStore.Context.Entities": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.2"
+        },
+        "compile": {
+          "bin/placeholder/GameStore.Services.Carts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameStore.Services.Carts.dll": {}
+        }
+      },
       "GameStore.Services.Comments/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -2289,6 +2308,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "GameStore.Common": "1.0.0",
+          "GameStore.Context": "1.0.0",
           "GameStore.Context.Entities": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
           "RestSharp": "108.0.3"
@@ -6109,6 +6129,11 @@
       "path": "../../../Data/GameStore.Context.Migrations/GameStore.Context.Migrations.csproj",
       "msbuildProject": "../../../Data/GameStore.Context.Migrations/GameStore.Context.Migrations.csproj"
     },
+    "GameStore.Services.Carts/1.0.0": {
+      "type": "project",
+      "path": "../../../Services/GameStore.Services.Carts/GameStore.Services.Carts.csproj",
+      "msbuildProject": "../../../Services/GameStore.Services.Carts/GameStore.Services.Carts.csproj"
+    },
     "GameStore.Services.Comments/1.0.0": {
       "type": "project",
       "path": "../../../Services/GameStore.Services.Comments/GameStore.Services.Comments.csproj",
@@ -6143,6 +6168,7 @@
       "GameStore.Common >= 1.0.0",
       "GameStore.Context >= 1.0.0",
       "GameStore.Context.Migrations >= 1.0.0",
+      "GameStore.Services.Carts >= 1.0.0",
       "GameStore.Services.Comments >= 1.0.0",
       "GameStore.Services.Games >= 1.0.0",
       "GameStore.Services.Settings >= 1.0.0",
@@ -6193,6 +6219,9 @@
             },
             "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj": {
               "projectPath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context\\GameStore.Context.csproj"
+            },
+            "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Carts\\GameStore.Services.Carts.csproj": {
+              "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Carts\\GameStore.Services.Carts.csproj"
             },
             "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Comments\\GameStore.Services.Comments.csproj": {
               "projectPath": "C:\\Users\\Public\\GameStore\\Services\\GameStore.Services.Comments\\GameStore.Services.Comments.csproj"
@@ -6302,7 +6331,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

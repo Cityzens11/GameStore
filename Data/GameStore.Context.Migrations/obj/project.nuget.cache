@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pQ3ss6RtpxpJsD8CaqE053wobl6GXiadMHT9WA3SfpD/VHW97E0jIKYrzpyoPZWIogdUQ6YP6x6W03ZxvwXcug==",
+  "dgSpecHash": "y/eaBFY4XHlYTCcsj4XNtkpveVqWAowb5CoVu80/nB2JMQZbgP5KOHRgFg1o1zzlh8XmoUQm+WferGxNF4ukfA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Public\\GameStore\\Data\\GameStore.Context.Migrations\\GameStore.Context.Migrations.csproj",
   "expectedPackageFiles": [

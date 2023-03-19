@@ -8,4 +8,5 @@ public class AccountResponse
     public string UserName { get; set; }
     public string? ImageUri { get; set; }
     public string Email { get; set; }
+    public int CartId { get; set; }
 }
