@@ -8,8 +8,6 @@ using GameStore.Common.Validator;
 using GameStore.Context;
 using GameStore.Context.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Http.Headers;
-using System.Security.Cryptography.X509Certificates;
 
 public class GameService : IGameService
 {
@@ -120,7 +118,12 @@ public class GameService : IGameService
         var game = await context.Games.FirstOrDefaultAsync(x => x.Id.Equals(gameId))
             ?? throw new ProcessException($"The game (id: {gameId}) was not found");
 
-        context.Remove(game);
+        var comments = context.Comments.Where(x => x.GameId == gameId);
+        var cartItems = context.CartItems.Where(x => x.GameId == gameId);
+
+        context.CartItems.RemoveRange(cartItems);
+        context.Comments.RemoveRange(comments);
+        context.Games.Remove(game);
         context.SaveChanges();
     }
 

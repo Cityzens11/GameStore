@@ -27,7 +27,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GameStore.Context.Entities\GameStore.Context.Entities.csproj" />
     <ProjectReference Include="..\..\Data\GameStore.Context\GameStore.Context.csproj" />
+    <ProjectReference Include="..\..\Services\GameStore.Services.Carts\GameStore.Services.Carts.csproj" />
+    <ProjectReference Include="..\..\Services\GameStore.Services.Comments\GameStore.Services.Comments.csproj" />
     <ProjectReference Include="..\..\Services\GameStore.Services.Games\GameStore.Services.Games.csproj" />
+    <ProjectReference Include="..\..\Services\GameStore.Services.UserAccount\GameStore.Services.UserAccount.csproj" />
   </ItemGroup>
 
 </Project>

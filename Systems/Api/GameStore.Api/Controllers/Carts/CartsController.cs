@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using GameStore.Api.Controllers.Models;
 using GameStore.Common.Responses;
+using GameStore.Common.Security;
 using GameStore.Services.Carts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameStore.Api.Controllers;
@@ -63,7 +65,7 @@ public class CartsController : ControllerBase
     }
 
     [HttpPost("")]
-    //[Authorize(Policy = AppScopes.Manager)]
+    [Authorize(Policy = AppScopes.AnyPolicy)]
     public async Task AddCartItem([FromBody] AddCartItemRequest request)
     {
         var model = mapper.Map<AddCartItemModel>(request);
@@ -71,13 +73,14 @@ public class CartsController : ControllerBase
     }
 
     [HttpPut("{itemId}")]
+    [Authorize(Policy = AppScopes.AnyPolicy)]
     public async Task UpdateCartItem([FromRoute] int itemId, [FromBody] int quantity)
     {
         await cartService.UpdateCartItem(itemId, quantity);
     }
 
     [HttpDelete("{itemId}")]
-    //[Authorize(Policy = AppScopes.GamesWrite)]
+    [Authorize(Policy = AppScopes.AnyPolicy)]
     public async Task<IActionResult> DeleteGame([FromRoute] int itemId)
     {
         await cartService.DeleteCartItem(itemId);

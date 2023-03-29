@@ -22,7 +22,7 @@ public class UpdateCommentModelValidator : AbstractValidator<UpdateCommentModel>
 
         RuleFor(x => x.Body)
             .NotEmpty().WithMessage("Body is required.")
-            .MaximumLength(400).WithMessage("Body is long.");
+            .MaximumLength(600).WithMessage("Body is long.");
 
         RuleFor(x => x.TimeStamp)
             .NotEmpty().WithMessage("TimeStamp is required.");

@@ -131,6 +131,7 @@ public class GamesController : Controller
     {
         ViewBag.IsSigned = _cookieService.IsSigned();
         ViewBag.UserName = _cookieService.GetUserName();
+        ViewBag.UserRole = _cookieService.GetUserRole();
         ViewBag.FullName = _cookieService.GetFullName();
         ViewBag.Image = _cookieService.GetImage();
         ViewBag.CartId = _cookieService.GetCart();

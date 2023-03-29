@@ -6,55 +6,49 @@ using GameStore.Context.Entities;
 using GameStore.Services.Games;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using Moq.EntityFrameworkCore;
+
 
 namespace GameStore.Tests.Services;
 
-public class GameServiceTests
+public class GameServiceTests : IDisposable
 {
     private readonly Mock<IMapper> mapperMock;
     private readonly Mock<IDbContextFactory<MainDbContext>> contextFactoryMock;
     private readonly Mock<IModelValidator<AddGameModel>> addGameModelValidatorMock;
     private readonly Mock<IModelValidator<UpdateGameModel>> updateGameModelValidatorMock;
-    private readonly GameService gameService;
+    private readonly DbContextOptions<MainDbContext> _options;
 
     public GameServiceTests()
     {
         mapperMock = new Mock<IMapper>();
-        contextFactoryMock = new Mock<IDbContextFactory<MainDbContext>>();
         addGameModelValidatorMock = new Mock<IModelValidator<AddGameModel>>();
         updateGameModelValidatorMock = new Mock<IModelValidator<UpdateGameModel>>();
+        contextFactoryMock = new Mock<IDbContextFactory<MainDbContext>>();
 
-        gameService = new GameService(
-            mapperMock.Object,
-            contextFactoryMock.Object,
-            addGameModelValidatorMock.Object,
-            updateGameModelValidatorMock.Object
-        );
+        _options = new DbContextOptionsBuilder<MainDbContext>()
+            .UseInMemoryDatabase(databaseName: "TestDb")
+            .Options;
     }
 
     [Fact]
-    public async Task GetGames_ShouldReturnListOfGames()
+    public async Task GetGames_ShouldReturnAllGames()
     {
         // Arrange
+        using var context = new MainDbContext(_options);
+
         var games = new List<Game>
         {
-            new Game { Id = 1, Title = "Game 1" },
-            new Game { Id = 2, Title = "Game 2" }
+            new Game { Id = 1, Title = "Game 1", Description = "Description 1", ImageUri = "Image 1",  Publisher = "Publisher 1"},
+            new Game { Id = 2, Title = "Game 2", Description = "Description 2", ImageUri = "Image 2",  Publisher = "Publisher 2"},
+            new Game { Id = 3, Title = "Game 3", Description = "Description 3", ImageUri = "Image 3",  Publisher = "Publisher 3"}
         };
-        var gameModels = new List<GameModel>
-        {
-            new GameModel { Id = 1, Name = "Game 1" },
-            new GameModel { Id = 2, Name = "Game 2" }
-        } as IEnumerable<GameModel>;
-        var queryableGames = games.AsQueryable(); ;
-        var offset = 0;
-        var limit = 20;
 
-        var contextMock = new Mock<MainDbContext>();
-        contextMock.Setup(x => x.Games).ReturnsDbSet(queryableGames);
-        contextFactoryMock.Setup(x => x.CreateDbContextAsync(default(CancellationToken))).ReturnsAsync(contextMock.Object);
+        await context.Games.AddRangeAsync(games);
+        await context.SaveChangesAsync();
 
+        contextFactoryMock
+            .Setup(x => x.CreateDbContextAsync(default(CancellationToken)))
+            .ReturnsAsync(context);
         mapperMock.Setup(x => x.Map<GameModel>(It.IsAny<Game>())).Returns(
                 (Game game) => new GameModel
                 {
@@ -63,84 +57,281 @@ public class GameServiceTests
                 }
             );
 
-        // Act
-        var result = await gameService.GetGames(offset, limit);
+        var gameService = new GameService(
+            mapperMock.Object, 
+            contextFactoryMock.Object, 
+            addGameModelValidatorMock.Object, 
+            updateGameModelValidatorMock.Object
+            );
 
-        var result1 = result.FirstOrDefault();
-        var result2 = result.Last();
-        var expected1 = gameModels.FirstOrDefault();
-        var expected2 = gameModels.Last();
+        // Act
+        var result = await gameService.GetGames();
 
         // Assert
-        Assert.Equal(result1.Name, expected1.Name);
-        Assert.Equal(result1.Id, expected1.Id);
-
-        Assert.Equal(result2.Name, expected2.Name);
-        Assert.Equal(result2.Id, expected2.Id);
+        Assert.Equal(games.Count, result.Count());
+        Assert.Equal(games.Select(g => g.Id), result.Select(g => g.Id));
     }
 
     [Fact]
-    public async Task GetGame_WhenGameExists_ShouldReturnGameModel()
+    public async Task GetGames_WithFilter_ShouldReturnFilteredGames()
     {
         // Arrange
-        var gameId = 1;
-        var game = new Game { Id = gameId, Title = "Game 1" };
-        var gameModel = new GameModel { Id = gameId, Name = "Game 1" };
+        using var context = new MainDbContext(_options);
 
-        var contextMock = new Mock<MainDbContext>();
-        contextMock.Setup(x => x.Games).ReturnsDbSet(new[] { game });
-        contextFactoryMock.Setup(x => x.CreateDbContextAsync(default(CancellationToken))).ReturnsAsync(contextMock.Object);
+        var games = new List<Game>
+        {
+            new Game { Id = 1, Title = "Game 1", Description = "Description 1", ImageUri = "Image 1",  Publisher = "Publisher 1", Genres = new List<Genre> { new Genre { Name = "Action" }, new Genre { Name = "Adventure" } } },
+            new Game { Id = 2, Title = "Game 2", Description = "Description 2", ImageUri = "Image 2",  Publisher = "Publisher 2", Genres = new List<Genre> { new Genre { Name = "Simulation" }, new Genre { Name = "Survival" } } },
+            new Game { Id = 3, Title = "Game 3", Description = "Description 3", ImageUri = "Image 3",  Publisher = "Publisher 3", Genres = new List<Genre> { new Genre { Name = "Action" }, new Genre { Name = "Strategy" } } }
+        };
 
-        mapperMock.Setup(x => x.Map<GameModel>(game)).Returns(gameModel);
+        await context.Games.AddRangeAsync(games);
+        await context.SaveChangesAsync();
+
+        contextFactoryMock
+            .Setup(x => x.CreateDbContextAsync(default(CancellationToken)))
+            .ReturnsAsync(context);
+        mapperMock.Setup(x => x.Map<GameModel>(It.IsAny<Game>())).Returns(
+                (Game game) => new GameModel
+                {
+                    Name = game.Title,
+                    Id = game.Id,
+                }
+            );
+
+        var gameService = new GameService(
+            mapperMock.Object, 
+            contextFactoryMock.Object, 
+            addGameModelValidatorMock.Object, 
+            updateGameModelValidatorMock.Object
+            );
+
+        var filter = new Filter { Genres = new List<string> { "Action", "Adventure" } };
 
         // Act
-        var result = await gameService.GetGame(gameId);
+        var result = await gameService.GetGames(filter);
 
         // Assert
-        Assert.Equal(result, gameModel);
+        Assert.Equal(2, result.Count());
+        Assert.Equal(new List<int> { 1, 3 }, result.Select(g => g.Id).ToList());
     }
 
     [Fact]
-    public async Task GetGame_WhenGameDoesNotExist_ShouldThrowNullReferenceException()
+    public async Task GetGame_ShouldReturnGame()
     {
         // Arrange
-        var gameId = 1;
+        using var context = new MainDbContext(_options);
 
-        var contextMock = new Mock<MainDbContext>();
-        contextMock.Setup(x => x.Games).ReturnsDbSet(new List<Game>());
-        contextFactoryMock.Setup(x => x.CreateDbContextAsync(default(CancellationToken))).ReturnsAsync(contextMock.Object);
+        var game = new Game { Id = 1, Title = "Game 1", Description = "Description 3", ImageUri = "Image 3", Publisher = "Publisher 3" };
+
+        await context.Games.AddAsync(game);
+        await context.SaveChangesAsync();
+
+        contextFactoryMock
+            .Setup(x => x.CreateDbContextAsync(default(CancellationToken)))
+            .ReturnsAsync(context);
+        mapperMock.Setup(x => x.Map<GameModel>(It.IsAny<Game>())).Returns(
+                (Game game) => new GameModel
+                {
+                    Name = game.Title,
+                    Id = game.Id,
+                }
+            );
+
+        var gameService = new GameService(
+            mapperMock.Object, 
+            contextFactoryMock.Object, 
+            addGameModelValidatorMock.Object, 
+            updateGameModelValidatorMock.Object
+            );
 
         // Act
-        var result = await gameService.GetGame(gameId);
+        var result = await gameService.GetGame(1);
 
         // Assert
-        Assert.Null(result);
+        Assert.Equal(game.Id, result.Id);
+        Assert.Equal(game.Title, result.Name);
     }
 
     [Fact]
-    public async Task AddGame_ShouldReturnGameModel()
+    public async Task AddGame_ShouldAddGameToDatabase()
     {
         // Arrange
-        var addGame = new AddGameModel { Name = "Test", Note = "TestDescription", Price = 3.5f, Publisher = "TestPublisher" };
-        var game = new Game { Title = "Test", Description = "TestDescription", Price = 3.5f, Publisher = "TestPublisher" };
-        var expectedResult = new GameModel { Name = "Test", Note = "TestDescription", Price = 3.5f, Publisher = "TestPublisher" };
+        using var context = new MainDbContext(_options);
 
-        var contextMock = new Mock<MainDbContext>();
-        contextMock.Setup(x => x.Games).ReturnsDbSet(new[] { game });
-        contextFactoryMock.Setup(x => x.CreateDbContextAsync(default(CancellationToken))).ReturnsAsync(contextMock.Object);
+        var model = new AddGameModel
+        {
+            Name = "Test Game",
+            Note = "Test Description",
+            Publisher = "Test Publisher",
+            ImageUri = "Test Image"
+        };
 
-        mapperMock.Setup(x => x.Map<Game>(addGame)).Returns(game);
-        mapperMock.Setup(x => x.Map<GameModel>(game)).Returns(expectedResult);
+        contextFactoryMock
+            .Setup(x => x.CreateDbContextAsync(default(CancellationToken)))
+            .ReturnsAsync(context);
+        mapperMock.Setup(x => x.Map<GameModel>(It.IsAny<Game>())).Returns(
+                (Game game) => new GameModel
+                {
+                    Name = game.Title,
+                    Id = game.Id,
+                }
+            );
+        mapperMock.Setup(x => x.Map<Game>(It.IsAny<AddGameModel>())).Returns(
+            (AddGameModel model) => new Game
+            {
+                Description = model.Note,
+                ImageUri = model.ImageUri,
+                Publisher = model.Publisher,
+                Title = model.Name
+            });
+
+        var gameService = new GameService(
+            mapperMock.Object,
+            contextFactoryMock.Object,
+            addGameModelValidatorMock.Object,
+            updateGameModelValidatorMock.Object
+            );
 
         // Act
-        var actualResult = await gameService.AddGame(addGame);
+        var game = await gameService.AddGame(model);
 
         // Assert
-        Assert.NotNull(actualResult);
-        Assert.IsType<GameModel>(actualResult);
-        Assert.Equal(addGame.Name, actualResult.Name);
-        Assert.Equal(addGame.Note, actualResult.Note);
-        Assert.Equal(addGame.Price, actualResult.Price);
-        Assert.Equal(addGame.Publisher, actualResult.Publisher);
+        using var cn = new MainDbContext(_options);
+        var savedGame = await cn.Games.FirstOrDefaultAsync(x => x.Id == game.Id);
+        Assert.NotNull(savedGame);
+        Assert.Equal(game.Name, savedGame.Title);
+    }
+
+    [Fact]
+    public async Task DeleteGame_ShouldDeleteGameFromDatabase()
+    {
+        // Arrange
+        using var context = new MainDbContext(_options);
+
+        var game = new Game
+        {
+            Title = "Test Game",
+            Description = "Test Description",
+            Publisher = "Test Publiser",
+            ImageUri = "Test Image"
+        };
+
+        context.Games.Add(game);
+        context.SaveChanges();
+
+        contextFactoryMock
+            .Setup(x => x.CreateDbContextAsync(default(CancellationToken)))
+            .ReturnsAsync(context);
+
+        var gameService = new GameService(
+            mapperMock.Object,
+            contextFactoryMock.Object,
+            addGameModelValidatorMock.Object,
+            updateGameModelValidatorMock.Object
+            );
+
+        // Act
+        await gameService.DeleteGame(game.Id);
+
+        // Assert
+        using var cn = new MainDbContext(_options);
+        var savedGame = await cn.Games.FirstOrDefaultAsync(x => x.Id == game.Id);
+        Assert.Null(savedGame);
+    }
+
+    [Fact]
+    public async Task GetGamesCount_ReturnsTotalCount()
+    {
+        // Arrange
+        using var context = new MainDbContext(_options);
+        var genres = new List<Genre>
+        {
+            new Genre { Name = "Action" },
+            new Genre { Name = "Adventure" },
+            new Genre { Name = "RPG" }
+        };
+
+        var games = new List<Game>
+        {
+            new Game { Title = "Game 1", Description = "Description 1", ImageUri = "Image 1", Publisher = "Publisher 1", Genres = new List<Genre> { genres[0], genres[1] } },
+            new Game { Title = "Game 2", Description = "Description 2", ImageUri = "Image 2", Publisher = "Publisher 2", Genres = new List<Genre> { genres[0], genres[2] } },
+            new Game { Title = "Game 3", Description = "Description 3", ImageUri = "Image 3", Publisher = "Publisher 3", Genres = new List<Genre> { genres[1] } }
+        };
+
+        context.Genres.AddRange(genres);
+        context.Games.AddRange(games);
+
+        context.SaveChanges();
+
+        contextFactoryMock
+            .Setup(x => x.CreateDbContextAsync(default(CancellationToken)))
+            .ReturnsAsync(context);
+
+        var gameService = new GameService(
+            mapperMock.Object,
+            contextFactoryMock.Object,
+            addGameModelValidatorMock.Object,
+            updateGameModelValidatorMock.Object
+            );
+
+        // Act
+        var result = await gameService.GetGamesCount();
+
+        // Assert
+        Assert.Equal(3, result);
+    }
+
+    [Fact]
+    public async Task GetGamesCount_WithFilter_ReturnsFilteredCount()
+    {
+        // Arrange
+        using var context = new MainDbContext(_options);
+
+        var genres = new List<Genre>
+        {
+            new Genre { Name = "Action" },
+            new Genre { Name = "Adventure" },
+            new Genre { Name = "RPG" }
+        };
+
+        var games = new List<Game>
+        {
+            new Game { Title = "Game 1", Description = "Description 1", ImageUri = "Image 1", Publisher = "Publisher 1", Genres = new List<Genre> { genres[0], genres[1] } },
+            new Game { Title = "Game 2", Description = "Description 2", ImageUri = "Image 2", Publisher = "Publisher 2", Genres = new List<Genre> { genres[0], genres[2] } },
+            new Game { Title = "Game 3", Description = "Description 3", ImageUri = "Image 3", Publisher = "Publisher 3", Genres = new List<Genre> { genres[1] } }
+        };
+
+        context.Genres.AddRange(genres);
+        context.Games.AddRange(games);
+
+        context.SaveChanges();
+
+        var filter = new Filter { Genres = new List<string> { "Action" } };
+
+        contextFactoryMock
+            .Setup(x => x.CreateDbContextAsync(default(CancellationToken)))
+            .ReturnsAsync(context);
+
+        var gameService = new GameService(
+            mapperMock.Object,
+            contextFactoryMock.Object,
+            addGameModelValidatorMock.Object,
+            updateGameModelValidatorMock.Object
+            );
+
+        // Act
+        var result = await gameService.GetGamesCount(filter);
+
+        // Assert
+        Assert.Equal(2, result);
+    }
+
+
+    public void Dispose()
+    {
+        var context = new MainDbContext(_options);
+        context.Database.EnsureDeleted();
+        context.Dispose();
     }
 }

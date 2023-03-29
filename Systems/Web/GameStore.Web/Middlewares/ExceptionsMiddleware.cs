@@ -35,10 +35,6 @@ public class ExceptionsMiddleware
             if (error is not null)
             {
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                //context.Response.ContentType = "text/html; charset=utf-8";
-                //await context.Response.WriteAsync(JsonSerializer.Serialize(error.IsNullOrEmpty()? "<h2>Bad Request</h2>" : "<h2>" + error + "</h2>"));
-                //await context.Response.StartAsync();
-                //await context.Response.CompleteAsync();
             }
         }
     }

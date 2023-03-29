@@ -18,31 +18,37 @@
                     int totalHours = (int)timeElapsed.TotalHours % 24;
                     int totalMinutes = (int)timeElapsed.TotalMinutes % 60;}
                     <p>@totalDays Days @totalHours Hours @totalMinutes Minutes ago</p>
-                    <a href="#" class="reply" data-comment-id="@comment.Id">Reply</a>
-                    @if (comment.User.Equals(ViewBag.UserName))
+                    @if (!string.IsNullOrEmpty(ViewBag.UserName))
                     {
-                    <a href="#" class="edit-comment" data-comment-id="@comment.Id">Edit</a>
-                    <a style="color: red;" asp-action="DeleteComment" asp-controller="Comments" asp-route-commentId="@comment.Id" asp-route-gameId="@comment.GameId">Delete</a>
-                    <div id="edit-@comment.Id" style="display:none;">
-                        <form method="post" asp-action="EditComment" asp-controller="Comments">
-                            <div class="form-wrapper">
-                                <label for="body">Edit Comment:</label>
-                                <input type="hidden" name="Id" value="@comment.Id" />
-                                <textarea name="Body" id="edit-body" placeholder="Write a comment" required>@comment.Body</textarea>
-                                <input type="hidden" name="User" value="@ViewBag.UserName" />
-                                <input type="hidden" name="CommentedTime" value="@DateTime.Now" />
-                                <input type="hidden" name="GameId" value="@comment.GameId" />
-                                <input type="hidden" name="ParentCommentId" value="@comment.ParentCommentId" />
-                                <button type="submit">Save</button>
-                            </div>
-                        </form>
-                    </div>
+                        <a href="#" class="reply" data-comment-id="@comment.Id">Reply</a>
+                    }
+                    @if (comment.User.Equals(ViewBag.UserName) || ViewBag.UserRole.Equals("admin") || ViewBag.UserRole.Equals("manager"))
+                    {
+                        @if (comment.User.Equals(ViewBag.UserName))
+                        {
+                            <a href="#" class="edit-comment" data-comment-id="@comment.Id">Edit</a>
+                        }
+                        <a style="color: red;" asp-action="DeleteComment" asp-controller="Comments" asp-route-commentId="@comment.Id" asp-route-gameId="@comment.GameId">Delete</a>
+                        <div id="edit-@comment.Id" style="display:none;">
+                            <form method="post" asp-action="EditComment" asp-controller="Comments">
+                                <div class="form-wrapper">
+                                    <label for="body">Edit Comment:</label>
+                                    <input type="hidden" name="Id" value="@comment.Id" />
+                                    <textarea name="Body" id="edit-body" placeholder="Write a comment" maxlength="600" required>@comment.Body</textarea>
+                                    <input type="hidden" name="User" value="@ViewBag.UserName" />
+                                    <input type="hidden" name="CommentedTime" value="@DateTime.Now" />
+                                    <input type="hidden" name="GameId" value="@comment.GameId" />
+                                    <input type="hidden" name="ParentCommentId" value="@comment.ParentCommentId" />
+                                    <button type="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     }
                     <div id="comment-@comment.Id" style="display:none;">
                         <form method="post" asp-action="AddComment" asp-controller="Comments">
                             <div class="form-wrapper">
                                 <label for="Body">Comment:</label>
-                                <textarea name="Body" id="Body" placeholder="Write a comment" required></textarea>
+                                <textarea name="Body" id="Body" placeholder="Write a comment" maxlength="600" required></textarea>
                                 <input type="hidden" name="User" value="@ViewBag.UserName" />
                                 <input type="hidden" name="CommentedTime" value="@DateTime.Now" />
                                 <input type="hidden" name="GameId" value="@comment.GameId" />

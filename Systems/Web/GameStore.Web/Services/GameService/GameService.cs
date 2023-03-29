@@ -6,6 +6,7 @@ using GameStore.Common.Filters;
 using GameStore.Web.Cloudinary;
 using GameStore.Web.Models;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -17,12 +18,16 @@ public class GameService : IGameService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly ICloudinaryService _cloudinaryService;
+    private readonly ICookieService _cookieService;
     private readonly HttpClient _httpClient;
     private readonly CloudinarySettings _cloudinarySettings;
+
+    private readonly string Token;
 
     public GameService(
         IHttpContextAccessor httpContextAccessor, 
         ICloudinaryService cloudinaryService, 
+        ICookieService cookieService,
         HttpClient httpClient, 
         CloudinarySettings cloudinarySettings
         )
@@ -30,7 +35,10 @@ public class GameService : IGameService
         _cloudinarySettings = cloudinarySettings;
         _httpClient = httpClient;
         _cloudinaryService = cloudinaryService;
+        _cookieService = cookieService;
         _httpContextAccessor = httpContextAccessor;
+
+        Token = _cookieService.GetToken();
     }
 
     public async Task<IEnumerable<GameListItem>> GetGamesAsync(int offset = 0, int limit = 12, Filter filter = null)
@@ -96,6 +104,7 @@ public class GameService : IGameService
 
         var body = JsonSerializer.Serialize(model);
         var request = new StringContent(body, Encoding.UTF8, "application/json");
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.PostAsync(url, request);
 
         var content = await response.Content.ReadAsStringAsync();
@@ -113,7 +122,7 @@ public class GameService : IGameService
 
         var body = JsonSerializer.Serialize(model);
         var request = new StringContent(body, Encoding.UTF8, "application/json");
-
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.PutAsync(url, request);
 
         var content = await response.Content.ReadAsStringAsync();
@@ -128,6 +137,7 @@ public class GameService : IGameService
     {
         string url = $"{Settings.ApiRoot}/v1/games/{gameId}";
 
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.DeleteAsync(url);
         var content = await response.Content.ReadAsStringAsync();
 
@@ -175,15 +185,5 @@ public class GameService : IGameService
     private void DeleteString(GameModel model)
     {
         ((List<string>)model.Genres).RemoveAll(x => x.Equals("System.Collections.Generic.List`1[System.String]"));
-    }
-
-    private string GetToken()
-    {
-        var context = _httpContextAccessor.HttpContext;
-        if (!context.Request.Cookies.TryGetValue("token", out string? accessToken))
-        {
-            throw new InvalidOperationException("access_token cookie not found.");
-        }
-        return accessToken;
     }
 }

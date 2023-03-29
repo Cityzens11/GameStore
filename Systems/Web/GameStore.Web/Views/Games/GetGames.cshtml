@@ -38,10 +38,13 @@
     <button onclick="searchName(@Model.PageViewModel.PageNumber)" class="search_button">Search</button>
 </div>
 
-<div class="addgamewrapper">
-    <a class="addgame" style="text-decoration:none" asp-area="" asp-controller="Games" asp-action="AddGame">Add Game</a>
-</div>
-<br />
+@if (ViewBag.UserRole.Equals("admin") || ViewBag.UserRole.Equals("manager"))
+{
+    <div class="addgamewrapper">
+        <a class="addgame" style="text-decoration:none" asp-area="" asp-controller="Games" asp-action="AddGame">Add Game</a>
+    </div>
+    <br />
+}
 
 <div class="wrapper">
     @foreach (var game in Model.Games)

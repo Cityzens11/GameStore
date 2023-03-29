@@ -109,7 +109,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpPost("")]
-    //[Authorize(Policy = AppScopes.Manager)]
+    [Authorize(Policy = AppScopes.CrudGame)]
     public async Task<GameResponse> AddGame([FromBody] AddGameRequest request)
     {
         var model = mapper.Map<AddGameModel>(request);
@@ -120,7 +120,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    //[Authorize(Policy = AppScopes.GamesWrite)]
+    [Authorize(Policy = AppScopes.CrudGame)]
     public async Task<IActionResult> UpdateGame([FromRoute] int id, [FromBody] UpdateGameRequest request)
     {
         var model = mapper.Map<UpdateGameModel>(request);
@@ -130,7 +130,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    //[Authorize(Policy = AppScopes.GamesWrite)]
+    [Authorize(Policy = AppScopes.CrudGame)]
     public async Task<IActionResult> DeleteGame([FromRoute] int id)
     {
         await gameService.DeleteGame(id);

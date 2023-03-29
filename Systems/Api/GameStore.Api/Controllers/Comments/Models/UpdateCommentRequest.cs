@@ -23,7 +23,7 @@ public class UpdateCommentResponseValidator : AbstractValidator<UpdateCommentReq
 
         RuleFor(x => x.Body)
             .NotEmpty().WithMessage("Body is required.")
-            .MaximumLength(400).WithMessage("Body is long.");
+            .MaximumLength(600).WithMessage("Body is long.");
 
         RuleFor(x => x.CommentedTime)
             .NotEmpty().WithMessage("CommentedTime is required.");

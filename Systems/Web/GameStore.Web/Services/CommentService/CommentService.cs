@@ -2,6 +2,7 @@
 
 using GameStore.Web.Models;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -9,10 +10,16 @@ using System.Threading.Tasks;
 public class CommentService : ICommentService
 {
     private readonly HttpClient _httpClient;
+    private readonly ICookieService _cookieService;
 
-    public CommentService(HttpClient httpClient)
+    private readonly string Token;
+
+    public CommentService(HttpClient httpClient, ICookieService cookieService)
     {
         _httpClient = httpClient;
+        _cookieService = cookieService;
+
+        Token = _cookieService.GetToken();
     }
 
     public async Task<IEnumerable<CommentListItem>> GetCommentsAsync(int gameId)
@@ -55,6 +62,7 @@ public class CommentService : ICommentService
 
         var body = JsonSerializer.Serialize(model);
         var request = new StringContent(body, Encoding.UTF8, "application/json");
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.PostAsync(url, request);
 
         var content = await response.Content.ReadAsStringAsync();
@@ -71,7 +79,7 @@ public class CommentService : ICommentService
 
         var body = JsonSerializer.Serialize(model);
         var request = new StringContent(body, Encoding.UTF8, "application/json");
-
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.PutAsync(url, request);
 
         var content = await response.Content.ReadAsStringAsync();
@@ -86,6 +94,7 @@ public class CommentService : ICommentService
     {
         string url = $"{Settings.ApiRoot}/v1/comments/{commentId}";
 
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.DeleteAsync(url);
         var content = await response.Content.ReadAsStringAsync();
 

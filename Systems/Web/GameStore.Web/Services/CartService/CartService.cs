@@ -1,16 +1,23 @@
 ﻿using GameStore.Web.Models;
 using System.Text.Json;
 using System.Text;
+using System.Net.Http.Headers;
 
 namespace GameStore.Web.Services;
 
 public class CartService : ICartService
 {
     private readonly HttpClient _httpClient;
+    private readonly ICookieService _cookieService;
 
-    public CartService(HttpClient httpClient)
+    private readonly string Token;
+
+    public CartService(HttpClient httpClient, ICookieService cookieService)
     {
         _httpClient = httpClient;
+        _cookieService = cookieService;
+
+        Token = _cookieService.GetToken();
     }
 
     public async Task<CartModel> CreateCartAsync(string userName)
@@ -53,6 +60,7 @@ public class CartService : ICartService
 
         var body = JsonSerializer.Serialize(model);
         var request = new StringContent(body, Encoding.UTF8, "application/json");
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.PostAsync(url, request);
 
         var content = await response.Content.ReadAsStringAsync();
@@ -69,6 +77,7 @@ public class CartService : ICartService
 
         var body = JsonSerializer.Serialize(quantity);
         var request = new StringContent(body, Encoding.UTF8, "application/json");
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.PutAsync(url, request);
 
         var content = await response.Content.ReadAsStringAsync();
@@ -83,6 +92,7 @@ public class CartService : ICartService
     {
         string url = $"{Settings.ApiRoot}/v1/carts/{itemId}";
 
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         var response = await _httpClient.DeleteAsync(url);
         var content = await response.Content.ReadAsStringAsync();
 

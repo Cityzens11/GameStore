@@ -10,9 +10,11 @@ public interface ICookieService
 
     public string GetUserName();
     public string GetFullName();
+    public string GetUserRole();
     public string GetImage();
     public string GetCart();
     public string GetCartSize();
+    public string GetToken();
     public void SetCartSize(string size);
     public bool IsSigned();
 

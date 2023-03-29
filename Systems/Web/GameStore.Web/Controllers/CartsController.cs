@@ -28,6 +28,12 @@ public class CartsController : Controller
     [HttpGet("AddCart")]
     public async Task<IActionResult> AddCartItem(int cartId, int gameId)
     {
+        if (!_cookieService.IsSigned())
+        {
+            TempData["temp"] = "Please Sign in";
+            return RedirectToAction("GetGames", "Games");
+        }
+
         var addItem = new AddCartItem { CartId = cartId, GameId = gameId };
         await _cartService.AddCartItemAsync(addItem);
 
@@ -68,8 +74,14 @@ public class CartsController : Controller
     [HttpPost("Proceed")]
     public async Task<IActionResult> Proceed([FromForm] ProceedModel model)
     {
-        TempData["Message"] = "Form submitted successfully!";
         SetViewBag();
+
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+
+        TempData["Message"] = "Form submitted successfully!";
         return View("AfterProceed", model);
     }
 
@@ -79,6 +91,7 @@ public class CartsController : Controller
     {
         ViewBag.IsSigned = _cookieService.IsSigned();
         ViewBag.UserName = _cookieService.GetUserName();
+        ViewBag.UserRole = _cookieService.GetUserRole();
         ViewBag.FullName = _cookieService.GetFullName();
         ViewBag.Image = _cookieService.GetImage();
         ViewBag.CartId = _cookieService.GetCart();

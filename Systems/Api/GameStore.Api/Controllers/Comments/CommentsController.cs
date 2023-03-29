@@ -20,7 +20,6 @@ using Microsoft.AspNetCore.Mvc;
 [ProducesResponseType(typeof(ErrorResponse), 400)]
 [Produces("application/json")]
 [Route("api/v{version:apiVersion}/comments")]
-//[Authorize]
 [ApiController]
 [ApiVersion("1.0")]
 public class CommentsController : ControllerBase
@@ -57,7 +56,6 @@ public class CommentsController : ControllerBase
     /// </summary>
     /// <response code="200">CommentResponse></response>
     [ProducesResponseType(typeof(CommentResponse), 200)]
-    //[Authorize(Policy = AppScopes.GamesRead)]
     [HttpGet("{id}")]
     public async Task<CommentResponse> GetCommentById([FromRoute] int id)
     {
@@ -68,7 +66,7 @@ public class CommentsController : ControllerBase
     }
 
     [HttpPost("")]
-    //[Authorize(Policy = AppScopes.GamesWrite)]
+    [Authorize(Policy = AppScopes.AnyPolicy)]
     public async Task<CommentResponse> AddComment([FromBody] AddCommentRequest request)
     {
         var model = mapper.Map<AddCommentModel>(request);
@@ -79,7 +77,7 @@ public class CommentsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    //[Authorize(Policy = AppScopes.GamesWrite)]
+    [Authorize(Policy = AppScopes.AnyPolicy)]
     public async Task<IActionResult> UpdateComment([FromRoute] int id, [FromBody] UpdateCommentRequest request)
     {
         var model = mapper.Map<UpdateCommentModel>(request);
@@ -89,7 +87,7 @@ public class CommentsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    //[Authorize(Policy = AppScopes.GamesWrite)]
+    [Authorize(Policy = AppScopes.AnyPolicy)]
     public async Task<IActionResult> DeleteComment([FromRoute] int id)
     {
         await commentService.DeleteComment(id);

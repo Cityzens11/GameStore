@@ -10,7 +10,10 @@
         "dependencies": {
           "GameStore.Context": "1.0.0",
           "GameStore.Context.Entities": "1.0.0",
+          "GameStore.Services.Carts": "1.0.0",
+          "GameStore.Services.Comments": "1.0.0",
           "GameStore.Services.Games": "1.0.0",
+          "GameStore.Services.UserAccount": "1.0.0",
           "Microsoft.EntityFrameworkCore.InMemory": "7.0.3",
           "Microsoft.NET.Test.Sdk": "17.5.0",
           "Moq": "4.18.4",
@@ -996,6 +999,14 @@
           }
         }
       },
+      "RestSharp/108.0.3": {
+        "runtime": {
+          "lib/net6.0/RestSharp.dll": {
+            "assemblyVersion": "108.0.3.0",
+            "fileVersion": "108.0.3.0"
+          }
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
@@ -1838,6 +1849,34 @@
           "GameStore.Context.Entities.dll": {}
         }
       },
+      "GameStore.Services.Carts/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "FluentValidation": "11.4.0",
+          "GameStore.Common": "1.0.0",
+          "GameStore.Context": "1.0.0",
+          "GameStore.Context.Entities": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.3"
+        },
+        "runtime": {
+          "GameStore.Services.Carts.dll": {}
+        }
+      },
+      "GameStore.Services.Comments/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "FluentValidation": "11.4.0",
+          "GameStore.Common": "1.0.0",
+          "GameStore.Context": "1.0.0",
+          "GameStore.Context.Entities": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.3"
+        },
+        "runtime": {
+          "GameStore.Services.Comments.dll": {}
+        }
+      },
       "GameStore.Services.Games/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
@@ -1850,6 +1889,18 @@
         },
         "runtime": {
           "GameStore.Services.Games.dll": {}
+        }
+      },
+      "GameStore.Services.UserAccount/1.0.0": {
+        "dependencies": {
+          "GameStore.Common": "1.0.0",
+          "GameStore.Context": "1.0.0",
+          "GameStore.Context.Entities": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "RestSharp": "108.0.3"
+        },
+        "runtime": {
+          "GameStore.Services.UserAccount.dll": {}
         }
       },
       "GameStore.Settings/1.0.0": {
@@ -2327,6 +2378,13 @@
       "sha512": "sha512-eaiXkUjC4NPcquGWzAGMXjuxvLwc6XGKMptSyOGQeT0X70BUZObuybJFZLA0OfTdueLd3US23NBPTBb6iF3V1Q==",
       "path": "nuget.frameworks/5.11.0",
       "hashPath": "nuget.frameworks.5.11.0.nupkg.sha512"
+    },
+    "RestSharp/108.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-phq1AkVhqVXHZxvWDV4fJEJKCR5OHNFUGx2Ix8o5EFShS6654oZhth4X2RWvaU/W7UexIswW0T+lTirxfLU2Ow==",
+      "path": "restsharp/108.0.3",
+      "hashPath": "restsharp.108.0.3.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
@@ -3008,7 +3066,22 @@
       "serviceable": false,
       "sha512": ""
     },
+    "GameStore.Services.Carts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameStore.Services.Comments/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "GameStore.Services.Games/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameStore.Services.UserAccount/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

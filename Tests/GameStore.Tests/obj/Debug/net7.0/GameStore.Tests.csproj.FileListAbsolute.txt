@@ -181,3 +181,10 @@ C:\Users\Public\GameStore\Tests\GameStore.Tests\obj\Debug\net7.0\refint\GameStor
 C:\Users\Public\GameStore\Tests\GameStore.Tests\obj\Debug\net7.0\GameStore.Tests.pdb
 C:\Users\Public\GameStore\Tests\GameStore.Tests\obj\Debug\net7.0\GameStore.Tests.genruntimeconfig.cache
 C:\Users\Public\GameStore\Tests\GameStore.Tests\obj\Debug\net7.0\ref\GameStore.Tests.dll
+C:\Users\Public\GameStore\Tests\GameStore.Tests\bin\Debug\net7.0\RestSharp.dll
+C:\Users\Public\GameStore\Tests\GameStore.Tests\bin\Debug\net7.0\GameStore.Services.Carts.dll
+C:\Users\Public\GameStore\Tests\GameStore.Tests\bin\Debug\net7.0\GameStore.Services.Comments.dll
+C:\Users\Public\GameStore\Tests\GameStore.Tests\bin\Debug\net7.0\GameStore.Services.UserAccount.dll
+C:\Users\Public\GameStore\Tests\GameStore.Tests\bin\Debug\net7.0\GameStore.Services.Carts.pdb
+C:\Users\Public\GameStore\Tests\GameStore.Tests\bin\Debug\net7.0\GameStore.Services.Comments.pdb
+C:\Users\Public\GameStore\Tests\GameStore.Tests\bin\Debug\net7.0\GameStore.Services.UserAccount.pdb

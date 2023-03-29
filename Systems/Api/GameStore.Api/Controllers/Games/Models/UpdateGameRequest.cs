@@ -6,6 +6,7 @@ using FluentValidation;
 
 public class UpdateGameRequest
 {
+    public int? Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string Publisher { get; set; } = string.Empty;
@@ -20,11 +21,11 @@ public class UpdateGameRequestValidator : AbstractValidator<UpdateGameRequest>
     {
         RuleFor(x => x.Title)
             .NotEmpty().WithMessage("Title is required.")
-            .MaximumLength(25).WithMessage("Title is long.");
+            .MaximumLength(100).WithMessage("Title is long.");
 
         RuleFor(x => x.Description)
             .NotEmpty().WithMessage("Description is required.")
-            .MaximumLength(400).WithMessage("Description is long.");
+            .MaximumLength(3000).WithMessage("Description is long.");
 
         RuleFor(x => x.Publisher)
             .NotEmpty().WithMessage("Publisher is required.");

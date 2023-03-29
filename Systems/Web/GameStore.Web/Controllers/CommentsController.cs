@@ -47,6 +47,10 @@ public class CommentsController : Controller
     {
         if (ModelState.IsValid)
         {
+            if (model.User != _cookieService.GetUserName() && _cookieService.GetUserRole() != "admin" && _cookieService.GetUserRole() != "manager")
+            {
+                return Forbid();
+            }
             TempData["validation"] = "Comment has been edited";
             await _commentService.EditCommentAsync(model);
         }

@@ -71,6 +71,18 @@ public static class AuthConfiguration
                 policy.RequireRole(AppScopes.Customer);
                 policy.RequireScope(AppScopes.Customer);
             });
+
+
+            options.AddPolicy(AppScopes.AnyPolicy, policy =>
+            {
+                policy.RequireRole(AppScopes.Admin, AppScopes.Manager, AppScopes.Customer);
+                policy.RequireScope(AppScopes.Admin, AppScopes.Manager, AppScopes.Customer);
+            });
+            options.AddPolicy(AppScopes.CrudGame, policy =>
+            {
+                policy.RequireRole(AppScopes.Admin, AppScopes.Manager);
+                policy.RequireScope(AppScopes.Admin, AppScopes.Manager);
+            });
         });
 
         return services;

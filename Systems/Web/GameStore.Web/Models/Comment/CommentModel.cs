@@ -4,7 +4,7 @@ namespace GameStore.Web.Models;
 
 public class CommentModel
 {
-    public int? Id { get; set; }
+    public int Id { get; set; }
     [Required]
     public string User { get; set; }
     [Required]

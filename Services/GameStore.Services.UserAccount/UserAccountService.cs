@@ -15,18 +15,16 @@ public class UserAccountService : IUserAccountService
     private readonly IMapper mapper;
     private readonly UserManager<User> userManager;
     private readonly IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator;
-    private readonly IDbContextFactory<MainDbContext> contextFactory;
 
     public UserAccountService(
         IMapper mapper,
         UserManager<User> userManager,
-        IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator,
-        IDbContextFactory<MainDbContext> contextFactory)
+        IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator
+        )
     {
         this.mapper = mapper;
         this.userManager = userManager;
         this.registerUserAccountModelValidator = registerUserAccountModelValidator;
-        this.contextFactory = contextFactory;
     }
 
     public async Task<UserAccountModel> GetUser(string userName)
@@ -84,7 +82,7 @@ public class UserAccountService : IUserAccountService
         var request = new RestRequest();
         request.AddParameter("domain", "", ParameterType.UrlSegment);
         request.Resource = "{domain}/messages";
-        request.AddParameter("from", ">");
+        request.AddParameter("from", "Mailgun Sandbox <>");
         request.AddParameter("to", unverifiedUser.Email);
         request.AddParameter("subject", "Verification Email");
         request.AddParameter("text", body);
